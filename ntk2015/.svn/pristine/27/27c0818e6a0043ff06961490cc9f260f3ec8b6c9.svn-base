@@ -1,0 +1,324 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<script type="text/javascript">
+tinymce.init({
+	// General options
+ 	//mode : "textareas",
+ 	mode: "exact",
+ 	elements:"dlg_tintuchoatdong_them_NoiDung",
+ 	theme : "advanced",
+	plugins : "imagemanager,filemanager,autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave,visualblocks",
+	
+	convert_urls:true,
+	relative_urls:false,
+	remove_script_host:false,
+	entity_encoding : "raw",
+	// Theme options
+	theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code",
+	theme_advanced_buttons3 : "preview,forecolor,backcolor,tablecontrols",
+	
+	theme_advanced_toolbar_location : "top",
+	theme_advanced_toolbar_align : "left",
+	theme_advanced_statusbar_location : "bottom",
+	theme_advanced_resizing: true,
+
+	// Style formats
+	style_formats : [
+		{title : 'Bold text', inline : 'b'},
+		{title : 'Red text', inline : 'span', styles : {color : '#ff0000'}},
+		{title : 'Red header', block : 'h1', styles : {color : '#ff0000'}},
+		{title : 'Table styles'},
+		{title : 'Table row 1', selector : 'tr', classes : 'tablerow1'}
+	],
+	height : "300",  
+	width: "600",
+	 setup : function(ed)
+     {
+         // set the editor font size
+         ed.onInit.add(function(ed)
+         {
+         ed.getBody().style.fontSize = '13px';
+         });
+     },
+});
+
+var link_vanban = ""; 
+  $(function() {
+   	$( "#dlg_tintuchoatdong_them_NgayBanHanh" ).datepicker({
+   			dateFormat: "dd/mm/yy",
+			changeMonth : true,
+			changeYear : true,
+			yearRange : '2015:2025',
+   	});
+   	
+	var btn = document.getElementById('uploadBtn');
+    var uploader = new ss.SimpleUpload({
+        button: btn,
+        url: root_href + UPLOAD_SERVLET,
+        name: 'uploadfile',
+        allowedExtensions: ['jpg', 'jpeg', 'png'],
+        data: {
+        	folder: FILE_TINTUCHOATDONG
+        }, 
+        hoverClass: 'hover',
+        focusClass: 'focus',
+        maxSize: 1024, // kilobytes
+        responseType: 'json',
+        
+        startXHR: function() {
+            progressOuter.style.display = 'block'; // make progress bar visible
+            this.setProgressBar( progressBar );
+        },
+        onSubmit: function() {
+            msgBox.innerHTML = ''; // empty the message box
+            btn.innerHTML = 'Uploading...'; // change button text to "Uploading..."
+          },
+        onComplete: function( filename, response ) {  
+            btn.innerHTML = 'Choose Another File';
+            progressOuter.style.display = 'none'; 
+            
+            link_vanban = response.link_image;
+            
+            if ( !response ) {
+            	msgBox.innerHTML = 'Unable to upload file';
+                return;
+            }
+            
+            if ( response.success === true ) {
+                msgBox.innerHTML = '<strong>' + escapeTags( filename ) + '</strong>' + ' successfully uploaded.';
+
+            } else {
+                if ( response.msg )  {
+                    msgBox.innerHTML = escapeTags( response.msg );
+
+                } else {
+                    msgBox.innerHTML = 'An error occurred and the upload failed.';
+                }
+            }
+          },
+          onExtError: function( filename, extension ) {
+        	msgBox.innerHTML = 'Lỗi: Không đúng định dạng file';  
+          },
+          onSizeError: function( filename, fileSize ){
+        	msgBox.innerHTML = 'Lỗi: File phải nhỏ hơn 1 MB';
+          },
+          onError: function() {
+            progressOuter.style.display = 'none';
+            msgBox.innerHTML = 'onError: Unable to upload file';
+          } 
+	});
+   	
+   	
+    function escapeTags( str ) {
+  	  return String( str )
+  	           .replace( /&/g, '&amp;' )
+  	           .replace( /"/g, '&quot;' )
+  	           .replace( /'/g, '&#39;' )
+  	           .replace( /</g, '&lt;' )
+  	           .replace( />/g, '&gt;' );
+  	}
+    
+  });
+  
+   function func_dlg_add_tintuchoatdong(isEdit) {
+    $('#form_tintuchoatdong_them').each(function () {
+       this.reset();
+    });
+
+    cwrs_Data2ComboBox(root_href + HOME_SERVLET, ACT_GET_TINTUCHOATDONG_TO_CBB, null, TYPE_DATA_HTML_CBB,'*', 'dlg_tintuchoatdong_them_TheLoai');
+    var row;
+    var datagrid_id = 'dlg_tintuchoatdong_show_datagrid';
+    var tenTieuDe = "";
+    var combo = "";
+    var theLoaiTinTuc = ""; 
+    var noidung = "";
+    var ngaytao = "";
+    var tomtat ="";
+    var kiemtraRowNULL =true ;
+    if (isEdit) {
+      row = $('#' + datagrid_id).datagrid('getSelected');
+       if(row != null){ 
+    	  $.ajax({
+    	        url: root_href + HOME_SERVLET ,
+    	        data:{
+    	          action: ACT_GET_DATA_TO_EDIT_DS_TINTUCHOATDONG,
+    	          condition: 'id_tintuc =' + row.id_tintuc
+    	        }, 
+    	        async:false,
+    	        success:function(jsonData) {
+    	          var jsonObject = JSON.parse(jsonData);
+    	          document.getElementById('dlg_tintuchoatdong_them_TieuDe').value = jsonObject.rows[0].tieude;
+    	          document.getElementById('dlg_tintuchoatdong_them_Tomtat').value = jsonObject.rows[0].tomtat;
+    			  document.getElementById('dlg_tintuchoatdong_them_NoiDung').value = jsonObject.rows[0].noidung;
+				  if(tinymce.editors.length > 0){ 
+					  tinymce.activeEditor.setContent(jsonObject.rows[0].noidung);
+				  }
+				  document.getElementById("dlg_tintuchoatdong_them_NgayBanHanh").value= jsonObject.rows[0].ngaytao;
+    			  document.getElementById('dlg_tintuchoatdong_them_TheLoai').value = jsonObject.rows[0].id_phanloai_tintuc;
+    			  document.getElementById("msgBox").innerHTML= (jsonObject.rows[0].duongdantintuc).split("/").pop();
+    			  link_vanban = jsonObject.rows[0].duongdantintuc;
+    			  return;
+    	        }}); 
+       }else{
+    	  kiemtraRowNULL = false;
+    	 // document.getElementById('form_tintuchoatdong_them').style.display = 'none';
+    	  $('#form_tintuchoatdong_them').hide();
+    	  msgalert_autoclose('Thông báo','Chọn tin tức','error');
+      } 
+    }
+     //alert(kiemtraNULL);
+     if(kiemtraRowNULL){
+	    try {
+	      $('#dlg_tintuchoatdong_them').dialog({
+	        title: "Cập nhật tin tức ",
+	        modal: false, open: function () {
+	          $(this).dialog('widget').draggable('option', {containment: false});
+	        },
+	        height: 550,
+	        width: 800,
+	        collapsible: true,
+	        draggable: true,
+	        resizable: true,
+	        position: [350, 100],
+	
+	        buttons: {
+	          "Cập nhật": function () {
+	            tenTieuDe = document.getElementById('dlg_tintuchoatdong_them_TieuDe').value;
+	            combo = document.getElementById('dlg_tintuchoatdong_them_TheLoai');
+			    theLoaiTinTuc = combo.options[combo.selectedIndex].value; 
+			    tomtat = document.getElementById('dlg_tintuchoatdong_them_Tomtat').value;
+			    noidung = tinymce.get('dlg_tintuchoatdong_them_NoiDung').getContent();
+			    ngaytao = document.getElementById("dlg_tintuchoatdong_them_NgayBanHanh").value;
+	
+			    if (kiemtrarong(tenTieuDe) || kiemtrarong(tomtat) || kiemtrarong(noidung) || theLoaiTinTuc == -1 || !ngaythang(ngaytao)  ){
+	              msgalert_autoclose('Thông báo','Không được bỏ trống hoặc chưa chọn hoặc không đúng định dạng!','warning');
+	              return;
+	            } 
+	            
+	            var utils = new Utils();
+	            var	strSQL;
+	            utils.clearFieldStorer();
+	            utils.putfval_int('id_phanloai_tintuc', theLoaiTinTuc);
+	            utils.putfval_string('tomtat', trim(tomtat));
+	            utils.putfval_string('tieude', trim(tenTieuDe));
+	            utils.putfval_int('ngaytao', gm.date.stringDate2Int(ngaytao));
+	            utils.putfval_string('noidung', trim(noidung));
+	            utils.putfval_string('duongdantintuc', link_vanban);
+	            if (isEdit){
+	              //last param
+	              utils.putfval_int_condition('id_tintuc', row.id_tintuc);
+	            }else {
+	            	$.ajax({
+						url: root_href + HOME_SERVLET ,
+						data:
+					    { 
+						 action: ACT_DB_MAX_DATA,
+						 tableName:'tbl_tintuc',
+						  fieldName:'id_tintuc' ,
+						  condition: null
+						},
+						async:false,
+						success:function(result) {
+							max = parseInt(result)+1 ;
+							utils.putfval_int('id_tintuc', max);
+						   }
+					});
+					
+				}
+	            
+	            strSQL = (!isEdit?utils.genInsertCmd_PreStatement('tbl_tintuc'):utils.genUpdateCmd_PreStatement('tbl_tintuc','id_tintuc=?'));
+	            //alert('Query =' + strSQL);
+	
+	            var strListValues = utils.getListValues();
+	            //alert(strListValues);
+	
+	            var strListIDs = '';
+	            var sqlTypeOrder = utils.getSQLTypeOrderInQuery();  // get datatypes in SQL sentence
+	            //alert('sqlTypeOrder= ' + sqlTypeOrder);
+	
+	            var ret = cwrs_InsUpdMultiRecord2DB(root_href + HOME_SERVLET, ACT_DB_INSERT_UPDATE_MULTI_OBJECT, null, strSQL, strListValues, sqlTypeOrder, strListIDs, null);
+	            if (ret == DB_STR_OK){
+	              if (isEdit){
+	                $('#' + datagrid_id).datagrid('reload');  //alert('insert/update multi object OK');
+	              }else {
+	                try{
+	               	  $('#form_tintuchoatdong_them').each(function () {
+	               	       this.reset();
+	               	  });	 
+	                  $('#' + datagrid_id).datagrid('reload');
+	                }catch(err){
+	                  msgalert_autoclose('Thông báo', err ,'warning');
+	                  return;
+	                }
+	              }
+	              if (isEdit) 	$( this ).dialog( "close" );
+	              msgalert_autoclose('Thông báo','Cập nhật/Thêm mới thành công','info');
+	            }else {
+	              msgalert_autoclose('Thông báo','Thao tác không thành công','error');//alert('insert/update multi object FAILED!');
+	            }
+	
+	          },
+	          "Đóng": function () {
+	            $(this).dialog("close");
+	          }
+	        },
+	        close: function () {
+	
+	        }
+	      });
+	    } catch (err) {
+	      alert("func_dlg_tintuchoatdong_show have dlg_tintuchoatdong_show " + err);
+	    }
+   }
+} 
+</script>
+
+<form id="form_tintuchoatdong_them">
+  <table>
+  <tr>
+      <td><b>Thể loại tin tức: </b></td>
+      <td><select name="dlg_tintuchoatdong_them_TheLoai" id="dlg_tintuchoatdong_them_TheLoai"></select></td>
+    </tr>
+   <tr>
+      <td><b>Tiêu đề: </b></td>
+      <td><input name="dlg_tintuchoatdong_them_TieuDe" id="dlg_tintuchoatdong_them_TieuDe"
+                 type="text" size="25"></td>
+    </tr>
+    <tr>
+      <td><b>Ngày tạo: </b></td>
+      <td><input name="dlg_tintuchoatdong_them_NgayBanHanh" id="dlg_tintuchoatdong_them_NgayBanHanh"
+                 type="text" size="25"></td>
+    </tr>
+     <td><b>Tóm tắt: </b></td>
+      <td><textarea name="dlg_tintuchoatdong_them_Tomtat" id="dlg_tintuchoatdong_them_Tomtat"
+                 row="20" cols="100" style="width:400px"></textarea></td>
+    </tr>
+      <tr>
+      <td><b>Hình đại diện: </b></td>
+      <td>  
+      	
+            <div class="col-xs-2">
+              <button id="uploadBtn" class="btn btn-large btn-primary">Choose File</button>
+            </div>
+            <div class="col-xs-10">
+          <div id="progressOuter" class="progress progress-striped active" style="display:none;">
+            <div id="progressBar" class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+            </div>
+          </div>
+            </div>
+          
+            <div class="col-xs-10">
+              <div id="msgBox">
+              </div>
+            </div>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Nội dung: </b></td>
+      <td><textarea name="dlg_tintuchoatdong_them_NoiDung" id="dlg_tintuchoatdong_them_NoiDung"
+                  cols="40" rows="20" ></textarea></td>
+    </tr>
+    
+  </table>
+</form>

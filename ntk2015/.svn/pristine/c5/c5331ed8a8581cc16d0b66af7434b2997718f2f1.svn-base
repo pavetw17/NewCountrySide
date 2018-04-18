@@ -1,0 +1,130 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: VN
+  Date: 1/20/2015
+  Time: 3:36 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-1.11.1.min.js" ></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-ui-1.10.4.custom.min.js" ></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/jquery-ui-1.10.4.custom.min.css" type="text/css" />
+<script type="text/javascript" >
+    $(function() {
+        $("#dp_ngaybd").datepicker({
+            numberOfMonths : 1,
+            dateFormat : 'dd-mm-yy',
+            changeMonth : true,
+            changeYear : true,
+            yearRange : '2015:2020'
+        }).attr('readonly', 'readonly').val("01-01-2015");
+    });
+</script>
+<html>
+<head>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/stylewebNTM.css" type="text/css" />
+    <title>BIỂU MẪU ÁP DỤNG CHO VIỆC NỘP HỒ SƠ</title>
+</head>
+<body>
+    <form >
+        <div class="phulucthongtu">
+            <div class="tieude">
+                <b>Phụ lục 1</b>
+                <br>
+                <h2>BIỂU MẪU ÁP DỤNG CHO VIỆC NỘP HỒ SƠ</h2>
+                <p>
+                    <em>(Kèm theo Thông tư số 08/2012/TT-BKHCN ngày 02/4 /2012 của Bộ trưởng Bộ Khoa học và Công nghệ)</em>
+                </p>
+                <br>
+                <p style="margin-bottom: 0;">
+                    <strong style="font-size: x-large;">CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong>
+                </p>
+                <p style="margin: 0 0 0 0">
+                    <strong style="font-size: x-large;">Độc lập – Tự do – Hạnh phúc</strong>
+                </p>
+                <p style="margin-top: 0;padding-bottom: 13px;">
+                    <strong>-------------------------------------------</strong>
+                </p>
+                <p style="margin-bottom: 0;">
+                    <strong style="font-size: large;">ĐƠN ĐĂNG KÝ </strong>
+                </p>
+                <p style="margin-top: 0;">
+                    <strong style="font-size: large;">CHỦ TRÌ ĐỀ TÀI, DỰ ÁN SXTN CẤP NHÀ NƯỚC</strong>
+                </p>
+                <p style="font-size: 14pt">
+                    Kính gửi: Bộ Khoa học và Công nghệ
+                </p>
+            </div>
+            <div class="noidung" style="padding-left: 30px;">
+                <p>
+                    Căn cứ thông báo của Bộ Khoa học và Công nghệ về việc tuyển chọn, giao trực tiếp tổ chức và cá nhân chủ trì thực hiện đề tài, dự án sản xuất thử nghiệm năm
+                    20 <input type="text" style="width:25px" id="txt_nam" name="txt_nam" />, chúng tôi:
+                </p>
+                <p>
+                    <strong>a) </strong>
+                    <textarea id="txt_a" name="txt_a"> </textarea>
+                </p>
+                <p>    (Tên, địa chỉ của tổ chức đăng ký tuyển chọn, giao trực tiếp làm cơ quan chủ trì đề tài, dự án SXTN)
+                </p>
+                <p>
+                    <strong>b) </strong>
+                    <textarea id="txt_b" name="txt_b"> </textarea>
+                </p>
+                <p>
+                    Họ và tên, học vị, chức vụ địa chỉ cá nhân đăng ký tuyển chọn, giao trực tiếp làm chủ nhiệm đề tài, dự án SXTN )</em>
+                    đăng ký chủ trì thực hiện đề tài, dự án SXTN:
+                </p>
+                <p>
+                    <textarea id="txt_thongtincanhan" name="txt_thongtincanhan"> </textarea>
+                </p>
+                <p>
+                    <strong><em>Thuộc lĩnh vực KH&CN:</em></strong>
+                </p>
+                <p>
+                    <textarea id="txt_linhvuc" name="txt_linhvuc"> </textarea>
+                </p>
+                <p>
+                    Thuộc Chương trình KH&CN (nếu có):
+                </p>
+                <p>
+                    <textarea id="txt_chuongtrinh" name="txt_chuongtrinh"> </textarea>
+                </p>
+                <p>
+                    Mã số của Chương trình: <input type="text" style="width:30px" id="txt_maso" name="txt_maso" />
+                </p>
+
+                <p>
+                    1. Thuyết minh đề tài theo biểu <em>B1-2a, hoặc </em>Thuyết minh dự án SXTN theo biểu<em> B1-2b</em>;
+                </p>
+                <p>
+                    2. Tóm tắt hoạt động KH&amp;CN của tổ chức đăng ký chủ trì đề tài, dự án SXTN theo biểu <em>B1-3</em>;
+                </p>
+                <p>
+                    3. Lý lịch khoa học của <input type="text" style="width:30px" id="txt_lylich" name="txt_lylich" /> cá nhân đăng ký
+                    chủ nhiệm <em>và tham gia chính</em> đề tài, dự án SXTN theo biểu <em>B1-4</em>;
+                </p>
+                <p>
+                    4. Văn bản xác nhận về sự đồng ý của các tổ chức đăng ký phối hợp nghiên cứu theo biểu B1-5 - nếu có phối hợp nghiên cứu;
+                </p>
+                <p>
+                    5. Các văn bản pháp lý chứng minh khả năng huy động vốn từ nguồn khác (nếu có kê khai huy động vốn từ nguồn khác);
+                </p>
+                <p>
+                    6. Các văn bản khác (bản sao Biên bản nghiệm thu của Hội đồng KH&amp;CN cấp Nhà nước, chứng từ nộp kinh phí thu hồi,..).
+                </p>
+                <p>
+                    7. Văn bản xác nhận sự đồng ý của các cơ quan có liên quan về việc ứng dụng kết quả nghiên cứu của đề tài/dự án nếu sản phẩm của đề tài/dự án đáp ứng được
+                    yêu cầu khoa học và mức chất lượng (nếu có).
+                </p>
+                <p>
+                    Chúng tôi xin cam đoan những nội dung và thông tin kê khai trong hồ sơ này là đúng sự thật.
+                </p>
+                <p align="center">
+                    <em> <input type="text" style="width:30px" id="txt_thanhpho" name="txt_thanhpho" /></em>
+                    ,  <input type="text" id="dp_ngaybd" name="dp_ngaybd" />
+                </p>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

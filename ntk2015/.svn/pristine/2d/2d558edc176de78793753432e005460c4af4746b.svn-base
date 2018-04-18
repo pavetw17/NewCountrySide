@@ -1,0 +1,228 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+<ul class="sidebar-menu ">
+  <li class="has-sub"><a href="javascript:void(0)" onclick="onsubmenu_tintuchoatdong(); return false;">
+    <span class="icon-box"><i class="icon-book"></i></span>
+    Hoạt động tin tức<span class="arrow"></span></a>
+    <ul class="sub">
+        <li><a href="javascript:void(0)" onclick="onsubmenu_tintuchoatdong_phanloai(); return false;" > Tin tức phân loại  </a></li>
+        <li><a href="javascript:void(0)" onclick="onsubmenu_tintuchoatdong(); return false;" > Tin Tức hoạt động </a></li>
+    </ul>
+  </li>
+<li class="has-sub"><a href="javascript:void(0)" onclick="onsubmenu_phanloaithanhvien(); return false;">
+    <span class="icon-box"><i class="icon-book"></i></span>
+    Form tổng<span class="arrow"></span></a>
+    <ul class="sub">
+        <li><a href="javascript:void(0)" onclick="onsubmenu_phanloaithanhvien(); return false;" > Phân loại thành viên </a></li>
+    </ul>
+  </li>
+
+ <li class="has-sub"><a href="javascript:void(0)" >
+    <span class="icon-box"><i class="icon-book"></i></span>
+    Chương trình KHCN phục vụ xây dựng NTM <span class="arrow"></span></a>
+    <ul class="sub">
+        <li><a href="javascript:void(0)" onclick="onsubmenu_vanbanykienchidao(); return false;" >Ý kiến chỉ đạo </a></li>
+    </ul>
+  </li>
+  <li class="has-sub"><a href="javascript:void(0)">
+    <span class="icon-box"><i class="icon-book"></i></span>
+    Quản lý văn bản <span class="arrow"></span></a>
+    <ul class="sub">
+      <li><a href="javascript:void(0)" onclick="onsubmenu_danhsachvanban_phanloai(); return false;" >Danh sách phân loại văn bản</a></li>
+      <li><a href="javascript:void(0)" onclick="onsubmenu_danhsachvanbanphaply(); return false;" >Danh sách văn bản pháp lý</a></li>
+    </ul>
+  </li>
+  <li class="has-sub"><a href="javascript:" class=""><span class="icon-box"><i class="icon-book"></i></span>
+    Bộ tiêu chí quốc gia nông thôn mới <span class="arrow"></span></a>
+    <ul class="sub">
+      <li><a href="#" >Quy hoạch và thực hiện quy hoạch </a></li>
+      <li><a href="#" >Giao thông  </a></li>
+      <li><a href="#" >Thủy lợi   </a></li>
+      <li><a href="#" >Điện  </a></li>
+      <li><a href="#" >Trường học   </a></li>
+      <li><a href="#" >Cơ sở vật chất văn hóa   </a></li>
+      <li><a href="#" >Chợ nông thôn   </a></li>
+      <li><a href="#" >Bưu điện   </a></li>
+      <li><a href="#" >Nhà ở dân cư    </a></li>
+      <li><a href="#" >Thu nhập    </a></li>
+      <li><a href="#" >Hộ nghèo     </a></li>
+      <li><a href="#" >Cơ cấu lao động     </a></li>
+      <li><a href="#" >Hình thức tổ chức sản xuất      </a></li>
+      <li><a href="#" >Giáo dục      </a></li>
+      <li><a href="#" >Y tế       </a></li>
+      <li><a href="#" >Văn hóa      </a></li>
+      <li><a href="#" >Môi trường       </a></li>
+      <li><a href="#" >Hệ thống tổ chức chính trị xã hội vững mạnh       </a></li>
+      <li><a href="#" >An ninh, trật tự xã hội được giữ vững        </a></li>
+    </ul>
+  </li>
+  <li class="has-sub"><a href="javascript:" class=""><span class="icon-box"><i
+          class="icon-dashboard"></i></span> Danh sách các đề tài dự án <span class="arrow"></span></a>
+    <ul class="sub">
+      <li><a class="" href="#">Dashboard 1</a></li>
+      <li><a class="" href="#">Dashboard 2</a></li>
+    </ul>
+  </li>
+  <li class="has-sub"><a href="javascript:" class=""><span class="icon-box"><i
+          class="icon-dashboard"></i></span> Quản lý hoạt động chương trình <span class="arrow"></span></a>
+    <ul class="sub">
+      <li><a class="" href="#"> Quản lý thông tin đề tài dự án</a></li>
+      <li><a class="" href="#"> Quản lý biên bản mở hồ sơ </a></li>
+      <li><a class="" href="#"> Quản lý biên bản họp hội đồng </a></li>
+      <li><a class="" href="#"> Quản lý danh sách chuyên gia </a></li>
+      <li><a class="" href="#"> Quản lý thuyết minh đề tài, dự án </a></li>
+      <li><a class="" href="#"> Quản lý các tổ chức tham gia thực hiện đề tài </a></li>
+      <li><a class="" href="#"> Quản lý nhân sự tham gia thực hiên đề tài </a></li>
+      <li><a class="" href="#"> Quản lý thông tin chi tiết về các cơ quan, tổ chức </a></li>
+      <li><a class="" href="#"> Quản lý nhân sự của tổ chức </a></li>
+      <li><a class="" href="#"> Quản lý biên bản kiểm phiếu </a></li>
+      <li><a class="" href="#"> Quản lý phiếu đánh giá </a></li>
+      <li><a class="" href="#"> Quản lý các tiêu chí quốc gia của đề tài, dự án  </a></li>
+      <li><a class="" href="#"> Quản lý danh sách sản phẩm cần đạt </a></li>
+      <li><a class="" href="#"> Quản lý nội dung công việc thực hiện </a></li>
+      <li><a class="" href="#"> Quản lý phiếu nhận xét </a></li>
+      <li><a class="" href="#"> Quản lý các đề tài và tổ chức thực hiện </a></li>
+      <li><a class="" href="#"> Báo cáo </a></li>
+      <li><a class="" href="#"> Cơ chế chính sách </a></li>
+      <li><a class="" href="#"> Giải pháp KHCN </a></li>
+      <li><a class="" href="#"> Quản lý phân bổ vốn theo hạng mục </a></li>
+      <li><a class="" href="#"> Bài viết về xã điểm ứng dụng </a></li>
+      <li><a class="" href="#"> Quản lý tiến độ giải ngân  </a></li>
+      <li><a class="" href="#"> Quản lý kế hoạch cấp kinh phí   </a></li>
+      <li><a class="" href="#"> Quản lý tiến độ cấp kinh phí   </a></li>
+      <li><a class="" href="#"> Thư viện ảnh chụp   </a></li>
+      <li><a class="" href="#"> Danh sách băng hình   </a></li>
+
+    </ul>
+  </li>
+  <li class="has-sub"><a href="javascript:" class=""><span class="icon-box"><i class="icon-cogs"></i></span>
+    Báo cáo <span class="arrow"></span></a>
+    <ul class="sub">
+      <li><a class="" href="#">Calendar</a></li>
+      <li><a class="" href="#">Data Table</a></li>
+      <li><a class="" href="#">Grids</a></li>
+      <li><a class="" href="#">Visual Charts</a></li>
+      <li><a class="" href="#">Conversations</a></li>
+      <li><a class="" href="#"> Gallery</a></li>
+    </ul>
+  </li>
+  <li class="has-sub"><a href="javascript:" class=""><span class="icon-box"><i class="icon-tasks"></i></span>
+    Cơ chế chính sách <span class="arrow"></span></a>
+    <ul class="sub">
+      <li><a class="" href="#">Form Layouts</a></li>
+      <li><a class="" href="#">Form Components</a></li>
+      <li><a class="" href="#">Form Wizard</a></li>
+      <li><a class="" href="#">Form Validation</a></li>
+    </ul>
+  </li>
+  <li class="has-sub"><a href="javascript:;" class=""><span class="icon-box"><i class="icon-fire"></i></span>
+    Icons <span class="arrow"></span></a>
+    <ul class="sub">
+      <li><a class="" href="#">Font Awesome</a></li>
+      <li><a class="" href="#">Glyphicons</a></li>
+    </ul>
+  </li>
+  <li class="has-sub"><a href="javascript:;" class=""><span class="icon-box"><i
+          class="icon-map-marker"></i></span> Maps <span class="arrow"></span></a>
+    <ul class="sub">
+      <li><a class="" href="./maps_google.html"> Google Maps</a></li>
+      <li><a class="" href="./maps_vector.html"> Vector Maps</a></li>
+    </ul>
+  </li>
+  <li class="has-sub "><a href="javascript:;" class=""><span class="icon-box"><i
+          class="icon-file-alt"></i></span> Sample Pages <span class="arrow"></span></a>
+    <ul class="sub">
+      <li><a class="" href="./profile.html">Profile</a></li>
+      <li class="active"><a class="" href="./blank.html">Blank Page</a></li>
+      <li><a class="" href="./sidebar_closed.html">Sidebar Closed Page</a></li>
+      <li><a class="" href="./pricing_tables.html">Pricing Tables</a></li>
+      <li><a class="" href="./faq.html">FAQ</a></li>
+      <li><a class="" href="./errors.html">Errors</a></li>
+    </ul>
+  </li>
+  <li class="has-sub"> <a href="javascript:void(0)" class=""><span class="icon-box">
+     <i class="icon-user"></i></span> Quản lý tài khoản <span class="arrow"></span></a>
+    <ul class="sub">
+      <li class=""><a href="javascript:void(0)" onclick="onsubmenu_danhsachquyen(); return false;">Danh sách quyền</a></li>
+      <li class=""><a href="javascript:void(0)" onclick="onsubmenu_danhsachtaikhoan(); return false;">Danh sách tài khoản</a></li>
+      <li><a class="" href="./profile.html">Thông tin tài khoản</a></li>
+    </ul>
+  </li>
+  <li><a class="" href=""><span class="icon-box"><i class="icon-user"></i></span> Quản lý tài khoản</a>
+    <ul class="sub">
+      <li><a class="" href="./profile.html">Thông tin tài khoản</a></li>
+      <li class="active"><a class="" href="./blank.html">Danh sách tài khoản</a></li>
+    </ul>
+  </li>
+</ul>
+
+<script>
+  function loadHtml(div, html, async, loadonce){
+    if (async == undefined) {
+      async = true;
+    }
+    if (loadonce == undefined) loadonce = false;
+    if (loadonce){
+      var content = $('#'+div).html();
+      content = content.trim();
+      // alert(content);
+      if (content != ''){ return true;}
+    }
+    $.ajax({ 
+      url: html ,
+      type: "GET",
+      async:async,
+      error: function (request, status, error) {
+        alert(request.responseText);
+      },
+      success:function(_data) {
+        //alert(_data);
+        $("#"+ div).html(_data);
+        return _data;
+      }
+    });
+
+  }
+ 
+  function onsubmenu_danhsachvanban_phanloai(){
+    loadHtml("dlg_qlvanban_phanloai_show","./page/quanlyvanban_phanloai.jsp", false);
+    func_dlg_qlvanban_phanloai_show();
+  }
+
+  function onsubmenu_danhsachquyen(){
+    loadHtml("dlg_qlquyen_dsquyen_show","./page/quanlyquyen_danhsachquyen.jsp", false);
+    func_dlg_qlquyen_dsquyen_show();
+  }
+  
+  function onsubmenu_danhsachtaikhoan(){
+	loadHtml("dlg_qlquyen_dstaikhoan_show","./page/quanlyquyen_danhsachtaikhoan.jsp", false);
+	func_dlg_qlquyen_dstaikhoan_show(false,'',ACT_GET_DATA_TO_FORM_SHOW_DS_TAIKHOAN);
+  }
+  
+  function onsubmenu_danhsachvanbanphaply(){
+	loadHtml("dlg_qlvanban_phaply_show","./page/quanlyvanban_phaply.jsp", false);
+	func_dlg_qlvanban_phaply_show();
+  }
+  
+  function onsubmenu_vanbanykienchidao(){
+	loadHtml("dlg_qlvanban_ykienchidao_show","./page/quanlyvanban_ykienchidao.jsp", false);
+	func_dlg_qlvanban_ykienchidao_show();
+  }
+  
+  function onsubmenu_tintuchoatdong_phanloai(){
+	loadHtml("dlg_tintuchoatdong_phanloai_show","./page/quanlytintuc_hoatdong_phanloai.jsp", false);
+	func_dlg_tintuchoatdong_phanloai_show();
+  }
+  
+  function onsubmenu_tintuchoatdong(){
+	loadHtml("dlg_tintuchoatdong_show","./page/quanlytintuc_hoatdong.jsp", false);
+	func_dlg_tintuchoatdong_show();
+  }
+  
+  function onsubmenu_phanloaithanhvien(){
+	loadHtml("dlg_phanloai_thanhvien_show","./page/quanlyphanloai_thanhvien.jsp", false);
+	func_dlg_phanloai_thanhvien_show();
+  }
+  
+</script>

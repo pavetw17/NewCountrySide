@@ -1,0 +1,79 @@
+package com.cwrs.ntk.servlets.Controller;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+/**
+ * Created by VN on 1/20/2015.
+ */
+@WebServlet("/nhap")
+public class nhap extends HttpServlet {
+
+    ServletConfig m_config;
+    InitialContext ctx = null;
+    static DataSource ds = null;
+    int activeCount;
+
+    public static final String DB_URL_DATASOURCE = "java:comp/env/jdbc/EventDB";
+
+    public void init(ServletConfig config) throws ServletException {
+        // TODO Auto-generated method stub
+        System.err.println("init DBPoolServlet...");
+        m_config = config;
+        //	System.out.println("init config=" +config);
+        activeCount = 0;
+        System.out.println("Create new DBPoolServlet instance");
+        try {
+            // TODO Auto-generated constructor stub
+            // Create a JNDI Initial context to be able to lookup the DataSource
+
+            ctx = new InitialContext();
+            // Lookup the DataSource, which will be backed by a pool
+            // that the application server provides.
+            ds = (DataSource)ctx.lookup(DB_URL_DATASOURCE);
+        } catch (NamingException ex) {
+            ex.printStackTrace();
+        }
+        // (new Thread(new ConversionThreadManager())).start();
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("1");
+        Connection conn = null;
+        Statement stm = null;
+        ResultSet rs = null;
+        String data = "";
+        try {
+            conn = ds.getConnection();
+            stm = conn.createStatement();
+            rs = stm.executeQuery("select id_news from tbl_tt_news");
+            while (rs.next()){
+                data += "<option value='" + rs.getInt("id_news") + "'>" + rs.getInt("id_news") + "</option>" ;
+            }
+            System.out.println(data);
+
+            PrintWriter out = response.getWriter();
+            out.print(data.toString());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //System.out.println("connection pool: =" +conn.hashCode());
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("2");
+    }
+}

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="persistenceUnit">
+        <class>com.cwrs.ntk.models.TblBaivietEntity</class>
+        <class>com.cwrs.ntk.models.TblBaivietDetaiEntity</class>
+        <class>com.cwrs.ntk.models.TblBanEntity</class>
+        <class>com.cwrs.ntk.models.TblBaocaoEntity</class>
+        <class>com.cwrs.ntk.models.TblBienbanHophoidongEntity</class>
+        <class>com.cwrs.ntk.models.TblBienbanKiemphieuEntity</class>
+        <class>com.cwrs.ntk.models.TblBienbanMohosoEntity</class>
+        <class>com.cwrs.ntk.models.TblChuyengiaEntity</class>
+        <class>com.cwrs.ntk.models.TblCocheChinhsachEntity</class>
+        <class>com.cwrs.ntk.models.TblDanhgiaKqTheonamEntity</class>
+        <class>com.cwrs.ntk.models.TblDetaiDuanEntity</class>
+        <class>com.cwrs.ntk.models.TblDetaiTochucEntity</class>
+        <class>com.cwrs.ntk.models.TblGiaidoanEntity</class>
+        <class>com.cwrs.ntk.models.TblGiaiphapKhcnEntity</class>
+        <class>com.cwrs.ntk.models.TblHuyenEntity</class>
+        <class>com.cwrs.ntk.models.TblKhCapkinhphiEntity</class>
+        <class>com.cwrs.ntk.models.TblKiennghiEntity</class>
+        <class>com.cwrs.ntk.models.TblMenuEntity</class>
+        <class>com.cwrs.ntk.models.TblMenuQuantriEntity</class>
+        <class>com.cwrs.ntk.models.TblNhansuEntity</class>
+        <class>com.cwrs.ntk.models.TblNhansuThamgiaEntity</class>
+        <class>com.cwrs.ntk.models.TblNhanxetEntity</class>
+        <class>com.cwrs.ntk.models.TblNoidungCapkinhphiEntity</class>
+        <class>com.cwrs.ntk.models.TblPhanQuyenEntity</class>
+        <class>com.cwrs.ntk.models.TblPhanbovonTheohangmucEntity</class>
+        <class>com.cwrs.ntk.models.TblPhanloaiBaocaoEntity</class>
+        <class>com.cwrs.ntk.models.TblPhanloaiDetaiDuanEntity</class>
+        <class>com.cwrs.ntk.models.TblPhanloaiKhuvucEntity</class>
+        <class>com.cwrs.ntk.models.TblPhanloaiKqEntity</class>
+        <class>com.cwrs.ntk.models.TblPhanloaiPhieuEntity</class>
+        <class>com.cwrs.ntk.models.TblPhanloaiSpEntity</class>
+        <class>com.cwrs.ntk.models.TblPhanloaiThanhvienEntity</class>
+        <class>com.cwrs.ntk.models.TblPhanloaiTintucEntity</class>
+        <class>com.cwrs.ntk.models.TblPhanloaiVanbanEntity</class>
+        <class>com.cwrs.ntk.models.TblPhieuEntity</class>
+        <class>com.cwrs.ntk.models.TblPictureEntity</class>
+        <class>com.cwrs.ntk.models.TblPictureDetaiEntity</class>
+        <class>com.cwrs.ntk.models.TblPictureFolderEntity</class>
+        <class>com.cwrs.ntk.models.TblSanphamEntity</class>
+        <class>com.cwrs.ntk.models.TblSubtopicsEntity</class>
+        <class>com.cwrs.ntk.models.TblTaikhoanEntity</class>
+        <class>com.cwrs.ntk.models.TblThuyetminhDetaiDuanEntity</class>
+        <class>com.cwrs.ntk.models.TblTiendoCapkinhphiEntity</class>
+        <class>com.cwrs.ntk.models.TblTiendoGiainganEntity</class>
+        <class>com.cwrs.ntk.models.TblTieuchiUngdungEntity</class>
+        <class>com.cwrs.ntk.models.TblTieuchiXaydungNtmEntity</class>
+        <class>com.cwrs.ntk.models.TblTinhthanhEntity</class>
+        <class>com.cwrs.ntk.models.TblTintucEntity</class>
+        <class>com.cwrs.ntk.models.TblTochucEntity</class>
+        <class>com.cwrs.ntk.models.TblTochucThamgiaEntity</class>
+        <class>com.cwrs.ntk.models.TblTopicsEntity</class>
+        <class>com.cwrs.ntk.models.TblVaitroEntity</class>
+        <class>com.cwrs.ntk.models.TblVanbanphaplyEntity</class>
+        <class>com.cwrs.ntk.models.TblVideoEntity</class>
+        <class>com.cwrs.ntk.models.TblVideoDetaiEntity</class>
+        <class>com.cwrs.ntk.models.TblVideoFolderEntity</class>
+        <class>com.cwrs.ntk.models.TblXadiemEntity</class>
+        <class>com.cwrs.ntk.models.TblYkienchidaoEntity</class>
+        <properties>
+            <property name="eclipselink.jdbc.url" value="jdbc:postgresql://localhost:5432/ntm"/>
+            <property name="eclipselink.jdbc.driver" value="org.postgresql.Driver"/>
+
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/ntm"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+
+            <property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost:5432/ntm"/>
+            <property name="openjpa.ConnectionDriverName" value="org.postgresql.Driver"/>
+
+            <property name="toplink.jdbc.url" value="jdbc:postgresql://localhost:5432/ntm"/>
+            <property name="toplink.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="toplink.jdbc.user"/>
+            <property name="toplink.jdbc.password"/>
+
+        </properties>
+    </persistence-unit>
+</persistence>

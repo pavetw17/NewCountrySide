@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - ntm@localhost" uuid="c09e2758-4cd9-4b62-97f9-859c4b9926b8">
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <schema-pattern>ntm.pg_catalog ntm.public</schema-pattern>
+      <default-schemas>ntm.pg_catalog ntm.public</default-schemas>
+    </data-source>
+  </component>
+</project>

@@ -1,0 +1,40 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="http://localhost:8080/resources/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="http://localhost:8080/resources/js/cwrs/dialogs.js"></script>
+<div class="container">
+
+    <form method = "post" class="form-signin" role="form" action="http://localhost:8080/nhap">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="text" class="form-control" name = "username" placeholder="User Name" >
+        <input type="password" class="form-control" name = "password" placeholder="Password" >
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in">
+    </form>
+
+</div>
+
+<form action="http://localhost:8080/nhap" id="register" method = "post" >
+<div align="center" style="width:400px; margin-left:5px; border: 1px solid #666666; " >
+    <div style=" margin-bottom:10px;height:20px" ></div>
+    <div style=" margin-bottom:5px;margin-right:10px; margin-left:5px">
+        <strong style="float:left;">Load su kien 1:</strong>
+        <select name="dlg_sukien1" id="dlg_sukien1" style="width:200px;margin-left:100px "></select>
+        <!-- Danh sách giống lúa lấy từ CSDL tbl_lua-->
+    </div>
+    <div style=" margin-bottom:5px;margin-right:10px; margin-left:5px">
+        <strong style="float:left;">Load su kien 2:</strong>
+        <select name="dlg_sukien2" id="dlg_sukien2" style="width:200px;margin-left:100px "></select>
+        <!-- Danh sách giống lúa lấy từ CSDL tbl_lua-->
+    </div>
+    <input type="submit" value="an" />
+</div>
+</form>
+
+<script type="text/javascript" language="javascript">
+
+    cwrs_testnhap('nhap', 'demso', null, '1','*', 'dlg_sukien1');
+</script>

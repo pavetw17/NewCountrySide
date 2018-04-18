@@ -1,0 +1,285 @@
+/*	body, input, textarea {
+		font-family:	Arial, Helvetica, sans-serif;
+		font-size:		87.5%;
+	}
+	input, textarea {
+		font-family:	Arial, Helvetica, sans-serif;
+		font-size:		1em;
+	}
+	textarea {
+		font-size:		1.1em;
+	}
+	.container {
+		border-width:	0;
+		overflow:		hidden;
+		padding:		0;
+		display:		none; /* hide panes until layout initializes */
+	}
+/*	.block {
+		border:			1px dashed #BBB;
+		padding:		5px 10px;
+		font-weight:	bold;
+	}
+	.notBold{ font-weight: normal; }
+	.border	{ border-width:	1px; }
+	.lite	{ background: #EEE; color: #000; }
+	.dark	{ background: #777; color: #FFF; }
+	.grey	{ background: #CCC; color: #000; }
+	.yellow	{ background: #FFA; color: #777; }
+	.white	{ background: #FFF; color: #000; }
+
+	.inner-layout-container { height: 100%; }
+	#dataDlg.inner-layout-container { display: none; } /* initially hidden */
+
+
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; } 
+	#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px;background-color:#999; } 
+	#sortable li span { position: absolute; margin-left: -1.3em; } 
+
+	#droppable { width: 400px; height: 150px; padding: 0.5em; float: left; margin: 10px; background-color:#999; } 
+	#draggable, #draggable-nonvalid { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; background-color:#969;} 
+	.olControlPanel div { 
+          display:inline;
+          width:  24px;
+          height: 22px;   
+          top: 0px;
+          left:0px;          
+          margin-left: 5px;    
+          margin-top: 5px;
+ 		  float:left;/*horization*/         
+          background-color:blue;      
+          position: relative ;   
+        }         
+        .olControlPanel .olControlMouseDefaultsItemActive { 
+          width:  24px;  
+          height: 22px;
+   
+          background-color: blue;
+          background-image: url("../../js/lib/img/cwrs_panning_hand_active.png");                
+        }
+        .olControlPanel .olControlMouseDefaultsItemInactive { 
+          width:  24px;  
+          height: 22px;
+         
+          background-color: orange;
+          background-image: url("../../js/lib/img/cwrs_panning_hand_deactive.png");        
+        }
+         .olControlPanel .olControlPanningHandItemActive { 
+          width:  24px;  
+          height: 22px;
+          background-color: blue;
+          background-image: url("../../js/lib/img/cwrs_panning_hand_active.png");
+         /* margin-right: 50px;*/
+        
+        }
+        .olControlPanel .olControlPanningHandItemInactive {/* inactive ko viet hoa chá»¯ A*/
+          width:  24px;  
+          height: 22px;
+          background-color: orange;
+          background-image: url("../../js/lib/img/cwrs_panning_hand_deactive.png");
+        /* margin-left: 50px;*/
+         
+        }
+        
+
+        .olControlPanel .olControlCanhdongEditingItemInactive {/* inactive ko viet hoa chá»¯ A*/
+          width:  24px;  
+          height: 22px;
+          margin-left: 10px;
+          background-color: orange;
+          background-image: url("../../js/lib/img/cwrs_editing_canhdong_deactivate.png");
+         
+        }
+  
+        .olControlPanel .olControlCanhdongEditingItemActive { 
+          width:  24px;  
+          height: 22px;
+          margin-left: 10px;
+          background-color: blue;
+          background-image: url("../../js/lib/img/cwrs_editing_canhdong_activate.png");
+        
+        }
+       .olControlPanel .olControlDragRectangleItemActive { 
+          width:  24px;  
+          height: 22px;
+          margin-left: 10px;
+          background-color: blue;
+          background-image: url("../../js/lib/img/cwrs_drag_rectangle_active.png");
+        
+        }
+        .olControlPanel .olControlDragRectangleItemInactive {/* inactive ko viet hoa chá»¯ A*/
+          width:  24px;  
+          height: 22px;
+          margin-left: 10px;
+          background-color: orange;
+          background-image: url("../../js/lib/img/cwrs_drag_rectangle_deactive.png");
+         
+        }      
+        
+        .olControlPanel .olControlDrawFeatureItemActive { 
+          width:  22px;  
+          height: 22px;
+          background-image: url("../../js/lib/img/draw_line_on.png");
+         
+        }
+        .olControlPanel .olControlDrawFeatureItemInactive { 
+          width:  22px;  
+          height: 22px;
+          background-image: url("../../js/lib/img/draw_line_off.png");
+                                                                                                                                                                                                                                                                
+         }
+        .olControlPanel .olControlZoomBoxItemInactive { 
+          width:  24px;  
+          height: 22px;
+          background-color: orange;
+          background-image: url("../../js/lib/img/cwrs_zoombox_in_deactive.png");
+          
+        }
+        .olControlPanel .olControlZoomBoxItemActive { 
+          width:  24px;  
+          height: 22px;
+          background-color: blue;
+          background-image: url("../../js/lib/img/cwrs_zoombox_in_active.png");
+        
+        }
+        .olControlPanel .olControlZoomToMaxExtentItemInactive { 
+          width:  18px;  
+          height: 18px;
+          background-image: url("../../js/lib/img/zoom-world-mini.png");
+      
+        } 
+        
+         .olControlPanel .olControlZoomInItemActive { 
+          width:  24px;  
+          height: 22px;
+          background-color: blue;
+          background-image: url("../../js/lib/img/cwrs_zoomin_active.png");
+        
+        }
+        .olControlPanel .olControlZoomInItemInactive { 
+          width:  24px;  
+          height: 22px;
+          background-image: url("../../js/lib/img/cwrs_zoomin_deactive.png");
+      
+        }
+          .olControlPanel .olControlZoomOutItemActive { 
+          width:  24px;  
+          height: 22px;
+          background-color: blue;
+          background-image: url("../../js/lib/img/cwrs_zoomout_active.png");
+        
+        }
+        .olControlPanel .olControlZoomOutItemInactive { 
+          width:  24px;  
+          height: 22px;
+          background-image: url("../../js/lib/img/cwrs_zoomout_deactive.png");
+      
+        }  
+
+      .olControlSLDSelectBoxActive {
+            cursor: crosshair;
+        }
+        .olControlSLDSelectPolygonActive {
+            cursor: crosshair;
+        }
+        .olControlSLDSelectLineActive {
+            cursor: crosshair;
+        }
+        .olControlSLDSelectPointActive {
+            cursor: pointer;
+        }
+
+
+div.olControlCWRSDebugInfo
+{
+	color:#0000ff;
+	left:00%;
+	bottom:0;
+	right:3px;
+	display:inline;
+	position:absolute;
+	font-family:Arial;
+	font-weight:normal;
+	width:  300px;         
+	font-size:8;
+}
+
+
+
+		BODY,
+			HTML {
+				padding: 0px;
+				margin: 0px;
+			}
+			BODY {
+				font-family: Verdana, Arial, Helvetica, sans-serif;
+				font-size: 11px;
+				background: #FFF;
+				padding: 15px;
+				z-index:0;
+			}
+			
+			H1 {
+				font-family: Georgia, serif;
+				font-size: 20px;
+				font-weight: normal;
+			}
+			
+			H2 {
+				font-family: Georgia, serif;
+				font-size: 16px;
+				font-weight: normal;
+				margin: 0px 0px 10px 0px;
+			}
+			
+			#myDiv {
+				width: 150px;
+				border: solid 1px #2AA7DE;
+				background: #6CC8EF;
+				text-align: center;
+				padding: 4em .5em;
+				margin: 1em;
+				float: left;
+			}
+			
+			#myList {
+				margin: 1em;
+				float: left;
+			}
+			
+			#myList UL {
+				padding: 0px;
+				margin: 0em 1em;
+			}
+			
+			#myList LI {
+				width: 100px;
+				border: solid 1px #2AA7DE;
+				background: #6CC8EF;
+				padding: 5px 5px;
+				margin: 2px 0px;
+				list-style: none;
+			}
+			
+			#options {
+				clear: left;
+			}
+			
+			#options INPUT {
+				font-family: Verdana, Arial, Helvetica, sans-serif;
+				font-size: 11px;
+				width: 150px;
+			}
+	
+	
+	
+	
+	
+	#jq-books{width:200px;float:right;margin-right:0}
+	#jq-books li{line-height:1.25em;margin:1em 0 1.8em;clear:left}
+	#home-content-wrapper #jq-books a.jq-bookImg{float:left;margin-right:10px;width:55px;height:70px}
+	#jq-books h3{margin:0 0 .2em 0}
+	#home-content-wrapper #jq-books h3 a{font-size:1em;color:black;}
+	#home-content-wrapper #jq-books a.jq-buyNow{font-size:1em;color:white;display:block;background:url(http://static.jquery.com/files/rocker/images/btn_blueSheen.gif) 50% repeat-x;text-decoration:none;color:#fff;font-weight:bold;padding:.2em .8em;float:left;margin-top:.2em;}
+	
+

@@ -1,0 +1,28 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<div class="folder_news">
+    <span style="color:#B5250A; text-decoration: underline; font-style: inherit; font-weight: bold;">Tin nổi bật</span>
+    <div class="time-date">
+        16/01/2015
+    </div>
+</div>
+
+<div class="box_news_detail">
+    <p class="title">
+        Cổng TTĐT Chính phủ: Phấn đấu phục vụ Chính phủ, nhân dân tốt hơn
+    </p>
+    <div class="news-description">
+        <img alt="" src="/resources/uploads/DSC_7242_JPG.jpg">
+        <div class="noidung_tomtat"> Tổng Thanh tra Chính phủ Huỳnh Phong Tranh làm việc tại Kiên Giang
+            Tổng Thanh tra Huỳnh Phong Tranh làm việc tại Hậu Giang
+            Họp giao ban cấp Vụ báo cáo kết quả công tác chủ yếu tháng 11/2014 và phương hướng nhiệm vụ trọng tâm tháng 12/2015
+            Họp lấy ý kiến về trang phục ngành thanh tra</div>
+    </div>
+    <div class="NoiDung_baiviet">
+        Ủy viên Trung ương Đảng, Bí thư Đảng ủy, Bộ trưởng-Chủ nhiệm VPCP Nguyễn Văn Nên đã đến quán triệt và chỉ đạo Cổng TTĐT Chính phủ tại Hội nghị triển khai nhiệm vụ công tác năm 2015 của đơn vị tổ chức ngày 17/12/2014.
+        ​
+        Tổng Thanh tra Chính phủ Huỳnh Phong Tranh làm việc tại Kiên Giang
+        Tổng Thanh tra Huỳnh Phong Tranh làm việc tại Hậu Giang
+        Họp giao ban cấp Vụ báo cáo kết quả công tác chủ yếu tháng 11/2014 và phương hướng nhiệm vụ trọng tâm tháng 12/2015
+        Họp lấy ý kiến về trang phục ngành thanh tra
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition name="Page" template="/WEB-INF/template/template_home.jsp">
+        <put-attribute name="title" value="Khoa Học Công Nghệ - Nông Thông Mới" />
+        <put-attribute name="header" value="/layout/header.jsp" />
+        <put-attribute name="menu" value="/layout/menu.jsp" />
+        <put-attribute name="left" value="/layout/left.jsp" />
+        <put-attribute name="content" value="/layout/trangchu.jsp" />
+        <put-attribute name="right" value="/layout/right.jsp" />
+        <put-attribute name="footer" value="/layout/footer.jsp" />
+    </definition>
+     <definition name="PageBanDo" template="/WEB-INF/template/template_bando.jsp">
+        <put-attribute name="title" value="Bản đồ" />
+        <put-attribute name="header" value="/layout/header.jsp" />
+        <put-attribute name="menu" value="/layout/menu.jsp" />
+        <put-attribute name="content" value="/bando/trangbando.jsp" />
+        <put-attribute name="footer" value="/layout/footer.jsp" />
+    </definition>
+     <definition name="102" extends="Page">
+        <put-attribute name="title" value="Hệ thống văn bản" />
+        <put-attribute name="content" value="/page/trangVanBan.jsp"/>
+    </definition>
+     <definition name="103" extends="Page">
+        <put-attribute name="title" value="Hệ thống văn bản" />
+        <put-attribute name="content" value="/page/trangVanBanNoiDung.jsp"/>
+    </definition>
+    <definition name="105" extends="Page">
+        <put-attribute name="title" value="Ý kiến chỉ đạo" />
+        <put-attribute name="content" value="/page/trangYKienChiDao.jsp"/>
+    </definition>
+     <definition name="106" extends="Page">
+        <put-attribute name="title" value="Ý kiến chỉ đạo" />
+        <put-attribute name="content" value="/page/trangYKienChiDaoNoiDung.jsp"/>
+    </definition>
+  
+    <definition name="109" extends="Page">
+        <put-attribute name="title" value="Tin tức" />
+        <put-attribute name="content" value="/page/trangXemNoiDung.jsp"/>
+    </definition>
+    <definition name="TrangXemGoogleDocs" extends="Page">
+        <put-attribute name="title" value="Page 1" />
+        <put-attribute name="content" value="/page/trangXemGoogleDocs.jsp"/>
+    </definition>
+    <definition name="TrangVideo" template="/WEB-INF/template/template_album.jsp">
+        <put-attribute name="title" value="Album video" />
+        <put-attribute name="header" value="/layout/header.jsp" />
+        <put-attribute name="menu" value="/layout/menu.jsp" />
+        <put-attribute name="content" value="/page/trangVideo.jsp"/>
+        <put-attribute name="footer" value="/layout/footer.jsp" />
+    </definition>
+    <definition name="TrangAnh" extends="TrangVideo">
+        <put-attribute name="title" value="Album ảnh" />
+           <put-attribute name="content" value="/page/trangAnh.jsp"/>
+         <!--  <put-attribute name="content" value="/form/test.html"/>-->
+    </definition>
+
+    <definition name="TrangQuanTri" template="/WEB-INF/quantri/template_quantri.jsp" >
+        <put-attribute name="title" value="Trang Quản Trị" />
+        <put-attribute name="header" value="/quantri/layout/header.jsp" />
+        <put-attribute name="left" value="/quantri/layout/left.jsp" />
+        <put-attribute name="content" value="/quantri/layout/trangchu.jsp" />
+        <put-attribute name="footer" value="/quantri/layout/footer.jsp" />
+    </definition>
+</tiles-definitions>

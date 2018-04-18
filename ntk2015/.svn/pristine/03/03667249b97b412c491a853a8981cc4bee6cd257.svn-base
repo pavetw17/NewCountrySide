@@ -1,0 +1,118 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: VN
+  Date: 1/7/2015
+  Time: 3:46 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/easy-responsive-tabs.css" type="text/css"/>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/jquery.lightbox-0.5.css" type="text/css"/>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/easyResponsiveTabs.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.lightbox-0.5.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default',
+            width: 'auto',
+            fit: true,
+            closed: 'accordion',
+            activate: function (event) {
+                var $tab = $(this);
+                var $info = $('#tabInfo');
+                var $name = $('span', $info);
+                $name.text($tab.text());
+                $info.show();
+            }
+        });
+    });
+
+    $(function() {
+        $('#gallery a').lightBox();
+    });
+</script>
+
+
+<div class="box-c">
+    <div class="box-tinmoi">
+        <div class="title">
+            <span>Tin mới</span>
+        </div>
+        <ul>
+            <marquee height="180px" direction="up" scrollamount="3" onmouseover="this.stop();"
+                     onmouseout="this.start();">
+
+                <li>
+                    <a href="/ct/news/Lists/KetLuanThanhTra/View_Detail.aspx?ItemId=32">Thông báo Kết luận thanh tra
+                        trách nhiệm của Chủ tịch UBND tỉnh Long An trong việc thực hiện pháp luật về thanh tra, giải
+                        quyết khiếu nại, tố cáo và phòng, chống tham nhũng</a></li>
+
+                <li>
+                    <a href="/ct/news/Lists/PhongChongThamNhung/View_Detail.aspx?ItemId=426">Năm 2015 đề xuất thanh,
+                        kiểm tra tại 1 bộ, 6 tỉnh</a></li>
+
+                <li>
+                    <a href="/ct/news/Lists/TinTongHop/View_Detail.aspx?ItemId=1131">Khai giảng Lớp nghiệp vụ thanh tra
+                        viên K1/2015</a></li>
+
+                <li>
+                    <a href="/ct/news/Lists/TinTrongNganh/View_Detail.aspx?ItemId=732">Khai giảng Lớp Thanh tra viên
+                        chính K1/2015</a></li>
+            </marquee>
+        </ul>
+
+    </div>
+</div>
+
+<div class="box-c">
+    <div class="widget">
+        <div id="horizontalTab" >
+            <ul class="resp-tabs-list">
+                <li>Video Clip</li>
+                <li>Thư viện ảnh</li>
+            </ul>
+                <div class="resp-tabs-container">
+                    <div><!-- div 1 start-->
+                        <div class="tabbed_content" >
+                            <span class="Home_videoclip_left" style="float: left">Album video</span>
+                            <span class="Home_videoclip_right"> <a href="ChuyenTrang?action=100"> Xem tất
+                                cả </a>  </span>
+                            <iframe width="220" height="148" style="padding-top: 10px;"
+                                    src="//www.youtube.com/embed/xcVwLrAavyA" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div><!-- div 1 end -->
+
+                    <div >
+                        <div class="tabbed_content" >
+                            <span class="Home_videoclip_left" style="float: left">Album ảnh</span>
+                            <span class="Home_videoclip_right"> <a href="ChuyenTrang?action=101"> Xem tất
+                                cả </a>  </span>
+
+                        </div>
+                        <div class="Home_middle">
+                            <div class="Home_show-slide" id="gallery">
+                                <div class="Home_thumbnail-show">
+                                    <a title="" href="/resources/uploads/DSC_7242_JPG.jpg" >
+                                        <img class="example-image" src="/resources/uploads/DSC_7242_JPG.jpg"></a>
+                                </div>
+                                <div class="Home_thumbnail-show">
+                                    <a title="" href="/resources/uploads/DSC_7242_JPG.jpg" >
+                                        <img class="example-image" src="/resources/uploads/DSC_7242_JPG.jpg"></a>
+                                </div>
+                                <div class="Home_thumbnail-show">
+                                    <a title="" href="/resources/uploads/DSC_7242_JPG.jpg" >
+                                        <img class="example-image" src="/resources/uploads/DSC_7242_JPG.jpg"></a>
+                                </div>
+                                <div class="Home_thumbnail-show">
+                                    <a title="" href="/resources/uploads/DSC_7242_JPG.jpg" >
+                                        <img class="example-image" src="/resources/uploads/DSC_7242_JPG.jpg"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+

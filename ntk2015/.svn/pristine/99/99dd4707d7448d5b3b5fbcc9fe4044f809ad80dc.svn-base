@@ -1,0 +1,45 @@
+@CHARSET "ISO-8859-1";
+.img_report
+    {
+        display:block;
+        width: 217px;
+        height:25px;
+        background-image: url('image/static/ban_do.png');
+        background-repeat: no-repeat;
+    }
+.icon1
+{
+    width:32px; 
+    height:25px;
+    background-position: -0px -0px;
+}
+.icon2
+{
+    width:32px;
+    height:25px;
+    background-position: -33px -0px;
+}
+.icon3
+{
+    width:32px;
+    height:25px;
+    background-position: -66px -1px;
+}
+.icon4
+{
+    width:32px;
+    height:25px;
+    background-position: -99px -1px;
+}
+.icon5
+{
+    width:32px;
+    height:25px;
+    background-position: -132px -1px;
+}
+.icon6
+{
+    width:32px;
+    height:25px;
+    background-position: -165px -1px;
+}

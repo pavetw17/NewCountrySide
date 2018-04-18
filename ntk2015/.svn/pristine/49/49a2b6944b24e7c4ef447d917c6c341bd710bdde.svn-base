@@ -1,0 +1,303 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<form id="form_dtr_add_ttgc" action="">
+
+<div align="center" style="width:400px; margin-left:5px; border: 1px solid #666666; " >
+  <div style=" margin-bottom:10px;height:20px" ></div>
+	                <div style=" margin-bottom:5px;margin-right:10px; margin-left:5px">
+						<strong style="float:left;">Giống lúa:</strong>
+					     <select name="dlg_dtr_ttgc_cbgionglua" id="dlg_dtr_ttgc_cbgionglua" style="width:200px;margin-left:100px "></select>
+						 <!-- Danh sách giống lúa lấy từ CSDL tbl_lua--> 
+					</div>
+					
+					<div style=" margin-bottom:5px;margin-right:10px; margin-left:5px">
+						<strong style="float:left;">Ngày gieo cấy:</strong>
+
+						<input type="text" id="dlg_dtr_ttgc_txtngaybatdau" style="width:171px;margin-left:75px";">
+						
+						<img id="dlg_dtr_ttgc_dateimg_2" alt="" src="components/datebox/images/datebox_arrow.png" style="margin-bottom:-6px;margin-top:8px" width="22px";height="0px"; onclick="showDateBox('dlg_dtr_ttgc_form_add','global_calendar','dlg_dtr_ttgc_txtngaybatdau','dlg_dtr_ttgc_dateimg_2')" >
+
+					</div>
+					<div style=" margin-bottom:5px;margin-right:10px;margin-left:5px">
+						<strong style="float:left;">Phương pháp:</strong> 
+						<select name="phuongphap" id="dlg_dtr_ttgc_cbphuongphap" style="width:200px; margin-left:75px">
+							<option value="Gieo sạ">Gieo sạ</option>
+							<option value="Cấy thẳng">Cấy thẳng</option>
+							<option value="Lúa chét">Lúa chét</option>
+						</select>
+					</div>	
+				
+					<div style=" margin-bottom:5px;margin-right:10px; margin-left:5px">
+						<strong style="float:left;">Trà lúa:</strong>
+				        <select name="dlg_dtr_ttgc_cbgionglua" id="dlg_dtr_ttgc_cbtralua" style="width:200px; margin-left:115px" >
+                       </select> <!-- Danh sách trà lúa lấy từ CSDL --> 
+					</div>
+				
+					<div style=" margin-bottom:5px;margin-right:10px; margin-left:5px; margin-bottom:20px;">
+						<strong style="float:left;">Vụ lúa: </strong>
+						<select name="dlg_dtr_ttgc_cbvulua" id="dlg_dtr_ttgc_cbvulua" style="width:200px; margin-left:120px" >
+				        			
+				        		</select>		
+					</div>						
+</div>
+</form>
+<script type="text/javascript" language="javascript"> 
+function show_dlg_add_thongtingieocay_ruong(isEdit){
+	if (!checkRoleDieutraRuongCanhdong()) return;
+	$('#form_dtr_add_ttgc').each(function(){this.reset();});
+	var datagrid_id    = 'dlg_dtr_ttgc_form_show_datagrid';
+	var table_database ='tbl_ttgc_ruong_tmp';
+	var primary_id     = 'ttgc_id';
+	//Load giống lúa to combobox
+	cwrs_Data2ComboBox(MAIN_SERVLET, ACT_GET_GIONGLUA_TO_CBB, null, TYPE_DATA_HTML_CBB,'*', 'dlg_dtr_ttgc_cbgionglua');
+	//Load trà lúa to combobox
+	cwrs_Data2ComboBox(MAIN_SERVLET, ACT_GET_TRALUA_TO_CBB, null, TYPE_DATA_HTML_CBB,'*', 'dlg_dtr_ttgc_cbtralua');
+	cwrs_Data2ComboBox(MAIN_SERVLET, ACT_GET_VULUA_TO_CBB, null, TYPE_DATA_HTML_CBB,'*', 'dlg_dtr_ttgc_cbvulua');
+	
+	 if (getTotalFeaturesSelected() == 0 && !isEdit) {
+		 msgalert('Thông báo','Hãy chọn một hoặc một nhóm ruộng','warning');
+
+		return;
+	 }
+//	 if (!checkRoleXa()) {
+//		 msgalert_autoclose('Thông báo','Bạn không có quyền cho địa phương này','warning');
+//		 return;
+//	 }
+	 var row;
+	 var ttgc_id;
+	 if (isEdit){
+		
+		row = $('#' + datagrid_id).datagrid('getSelected');
+		
+		$.ajax({url:MAIN_SERVLET ,									
+			    data:{ 
+				  action: ACT_GET_DATA_TO_EDIT_TTGC_RUONG,
+				  condition: 'ttgc_id ='+row.ttgc_id
+				},
+				async:false,
+			    success:function(jsonData) {
+					//alert(jsonData);
+					var jsonObject = JSON.parse(jsonData);
+				     ttgc_id = jsonObject.rows[0].ttgc_id;
+					document.getElementById('dlg_dtr_ttgc_cbgionglua').value = jsonObject.rows[0].ttgc_gionglua_id;
+					document.getElementById('dlg_dtr_ttgc_cbtralua').value = jsonObject.rows[0].ttgc_tralua_id;
+					document.getElementById('dlg_dtr_ttgc_cbvulua').value = jsonObject.rows[0].ttgc_vulua;
+					document.getElementById('dlg_dtr_ttgc_cbphuongphap').value = jsonObject.rows[0].ttgc_phuongphap;
+ 					document.getElementById('dlg_dtr_ttgc_txtngaybatdau').value = jsonObject.rows[0].ttgc_ngaybatdau;
+					return;
+			    }});
+	}
+
+	var buttons = {}; 
+	 buttons[(isEdit?"Cập nhật":"Thêm mới")] = function() { 
+		//get data from form dialog
+		// var ngaydieutra = document.getElementById('dlg_dtr_ttgc_txtngaydieutra').value;
+		 var utils = new Utils();
+		 var utils_mp = new Utils(); 
+		 
+		 var combo = document.getElementById("dlg_dtr_ttgc_cbgionglua");
+		 var gionglua_id = combo.options[combo.selectedIndex].value;
+		     
+		 var ngaybatdau_gieocay = document.getElementById('dlg_dtr_ttgc_txtngaybatdau').value;
+		// var ngayketthuc_gieocay = document.getElementById('dlg_dtr_ttgc_txtngayketthuc').value;
+
+		 combo = document.getElementById("dlg_dtr_ttgc_cbphuongphap");
+		 var phuongphap = combo.options[combo.selectedIndex].value;
+
+		 combo = document.getElementById("dlg_dtr_ttgc_cbtralua");
+		 var tralua_id = combo.options[combo.selectedIndex].value;
+		     
+		 combo = document.getElementById("dlg_dtr_ttgc_cbvulua");
+		 var vulua = combo.options[combo.selectedIndex].value;		
+		 
+		 if (gionglua_id == -1){
+				msgalert('Thông báo',' Hãy chọn giống lúa','warning');
+				return;
+			} 
+		 
+		 if (ngaythang(ngaybatdau_gieocay)||kiemtrarong(ngaybatdau_gieocay)){
+				msgalert('Thông báo','Nhập ngày gieo cấy hoặc kiểm tra lại đinh dạng dd/mm/yyyy)','warning');
+				return;
+			}
+		    if (tralua_id == -1){
+				msgalert('Thông báo',' Hãy chọn trà lúa','warning');
+				return; 
+			}
+		    if (parseInt(vulua) == -1){
+				msgalert('Thông báo',' Hãy chọn vụ lúa','warning');
+				return; 
+			}			
+			 var ngay_dieutra= gm.date.stringDate2Int(ngaybatdau_gieocay)- 120;
+			 
+			 if (!isEdit){
+				 var checkdate;
+				 $.ajax({
+						url:MAIN_SERVLET ,
+						data:
+					    { 
+						 action: ACT_DB_CHECK_RUONG,
+						 listruongID: utils.createStringWithSeparator(getListFeaturesIDSelected(), SQL_ID_LIST_SEP),
+						 tableName:'tbl_ttgc_ruong_tmp',
+						  fieldName:'ttgc_gionglua_id' ,
+						  condition: 'ttgc_vulua='+ '\'' +vulua+'\'' +' AND ttgc_ngaybatdau>'+ngay_dieutra +' AND ttgc_ruong_id='//+g_current_feature.fid 
+						},
+						async:false,
+						success:function(result) {
+							if (result == DB_STR_FAILED){
+		 						checkdate=false;
+		 						
+		 					  } 
+		 					else {
+		 						checkdate=true;
+		 						lstRuongerr=result;
+		 					}
+		 					return;
+						   }
+					});
+				     if (checkdate == false){
+						msgalert('Thông báo',MSG_ERROR_UNKNOW,'warning');
+						return;
+					}
+					else if(lstRuongerr != ''){
+						notify_ruong_error(lstRuongerr);
+						return;
+					}
+			 	}
+			 else {
+				 var checkdate;
+				 $.ajax({
+						url:MAIN_SERVLET ,
+						data:
+					    { 
+						 action: ACT_DB_CHECK_RUONG,
+						 listruongID:utils.createStringWithSeparator(getListFeaturesIDSelected(), SQL_ID_LIST_SEP),
+						 tableName:'tbl_ttgc_ruong_tmp',
+						  fieldName:'ttgc_gionglua_id' ,
+						  condition: 'ttgc_vulua='+ '\'' +vulua+'\'' + ' AND ttgc_id <>' + ttgc_id +' AND ttgc_ngaybatdau>'+ngay_dieutra +' AND ttgc_ruong_id='//+g_current_feature.fid 
+						},
+						async:false,
+						success:function(result) {
+							if (result == DB_STR_FAILED){
+		 						checkdate=false;
+		 						
+		 					  } 
+		 					else {
+		 						checkdate=true;
+		 						lstRuongerr=result;
+		 					}
+		 					return;
+						   }
+					});
+					if (checkdate == false){
+						msgalert('Thông báo',MSG_ERROR_UNKNOW,'warning');
+						return;
+					}
+					else if(lstRuongerr != ''){
+						notify_ruong_error(lstRuongerr);
+						return;
+					}
+			 	}
+	   
+		 var strSQL;	
+
+		 	utils.clearFieldStorer();
+		 	utils.putfval_int('ttgc_gionglua_id', gionglua_id);
+		 	utils.putfval_int('ttgc_tralua_id', tralua_id);
+		 	utils.putfval_int('ttgc_ngaybatdau', gm.date.stringDate2Int(ngaybatdau_gieocay));
+		 	utils.putfval_int('ttgc_vulua', vulua);
+		 	utils.putfval_string('ttgc_phuongphap', phuongphap) ;	
+		 	//for mo phong
+		 	utils_mp.clearFieldStorer();
+		 	utils_mp.putfval_int('ttgc_gionglua_id_mp', gionglua_id);
+		 	utils_mp.putfval_int('ttgc_tralua_id_mp', tralua_id);
+		 	utils_mp.putfval_int('ttgc_pb_type', TYPE_PHANBO_RUONG);//1 : ruong
+		 	utils_mp.putfval_int('ttgc_ngaygieocay_mp', gm.date.stringDate2Int(ngaybatdau_gieocay));
+		 	utils_mp.putfval_int('ttgc_vulua_mp', vulua);
+		 	utils_mp.putfval_string('ttgc_phuongphap_mp', phuongphap) ;	
+		 	
+		 	
+		 	//ko update ruong_id
+		 	if (!isEdit){
+		 		utils.putfval_int('ttgc_ruong_id', -1) ;
+		 		//for mo phong
+		 		utils_mp.putfval_int('ttgc_ruong_id_mp', -1) ;
+		 	}
+		 	if (isEdit){
+		 		row.ttgc_gionglua_id = gionglua_id;
+		 		row.ttgc_tralua_id = tralua_id;
+		 		row.ttgc_ngaybatdau = gm.date.stringDate2Int(ngaybatdau_gieocay);
+		 		row.ttgc_vulua = vulua;
+		 		row.ttgc_phuongphap = phuongphap;
+		 		
+		 		//last param
+			 	utils.putfval_int_condition(primary_id, row.ttgc_id);
+			 	//for mo phong
+			 	//utils_mp.putfval_int_condition('ttgc_id_mp', row.ttgc_id);
+		 	}
+		 	var strSQL = (!isEdit?utils.genInsertCmd_PreStatement(table_database):utils.genUpdateCmd_PreStatement(table_database,primary_id+'=?'));
+		 	//alert('Query =' +strSQL);
+		 	var strListValues = utils.getListValues();
+		 	
+		 	//alert(strListValues);
+		    var strListIDs;
+		    if (!isEdit)
+		    	strListIDs = utils.createStringWithSeparator(getListFeaturesIDSelected(), SQL_ID_LIST_SEP);
+		    else strListIDs = '';
+		    //alert('strListIDs'+strListIDs);
+		 	var sqlTypeOrder = utils.getSQLTypeOrderInQuery();
+		 	
+     		var ret = cwrs_InsUpdMultiRecord2DB(MAIN_SERVLET, ACT_DB_INSERT_UPDATE_MULTI_OBJECT, null/*condition*/, strSQL, strListValues, sqlTypeOrder, strListIDs, null/*strJSONObject*/);
+            if (ret == DB_STR_OK){
+            	if (isEdit){
+            		datagrid_load_safe('reload', datagrid_id);  //alert('insert/update multi object OK');
+            	}else {
+            	    datagrid_load_safe('load', datagrid_id);
+            	}
+            	msgalert(ALERT_TITLE_INFO,MSG_INSERT_UPDATE_SUCCESS,'info');
+                //MO PHONG
+    		 	var strSQL_mp = (!isEdit?utils_mp.genInsertCmd_PreStatement('tbl_ttgc_ruong_mp'):utils_mp.genUpdateCmd_PreStatement('tbl_ttgc_ruong_mp','ttgc_id_mp=?'));
+    		 	//alert('Query =' +strSQL);
+    		 	var strListValues_mp = utils_mp.getListValues();
+    		 	
+    		 	//alert(strListValues);
+    		    var strListIDs_mp;
+    		    if (!isEdit)
+    		    	strListIDs_mp = utils_mp.createStringWithSeparator(getListFeaturesIDSelected(), SQL_ID_LIST_SEP);
+    		    else strListIDs_mp = '';
+    		    //alert('strListIDs'+strListIDs);
+    		 	var sqlTypeOrder_mp = utils_mp.getSQLTypeOrderInQuery();
+    		 	
+         		var ret_mp = cwrs_InsUpdMultiRecord2DB(MAIN_SERVLET, ACT_DB_INSERT_UPDATE_MULTI_OBJECT, null/*condition*/, strSQL_mp, strListValues_mp, sqlTypeOrder_mp, strListIDs_mp, null/*strJSONObject*/);
+                if (ret_mp == DB_STR_OK){
+                }else {
+                	msgalert(ALERT_TITLE_INFO,"Add t Distributor table failed!",'error');//alert('insert/update multi object FAILED!');
+                }
+              //END MO PHONG 
+            	$( this ).dialog( "close" );
+            }else {
+            	msgalert(ALERT_TITLE_INFO,MSG_INSERT_UPDATE_FAILED,'error');//alert('insert/update multi object FAILED!');
+                return;
+            }
+            
+
+            
+	 };
+	 buttons["Đóng"]= function() {
+			$( this ).dialog( "close" );
+ 	 }; 
+     
+ 	$("#dlg_dtr_ttgc_form_add").dialog("option", "buttons", buttons);//dot not remove this
+	//Hiển thị dialog
+	$('#dlg_dtr_ttgc_form_add').dialog({
+		title:"Nhập thông tin gieo cấy (ruộng)",
+	    		    modal:false , open: function() {$(this).dialog('widget').draggable('option', {containment: false});},    
+	    height:300,
+	    width: 450,
+		collapsible:true
+	    });
+	$("#dlg_dtr_ttgc_form_add").dialog("option", "buttons", buttons);//dot not remove this
+	
+	
+}
+
+
+</script>

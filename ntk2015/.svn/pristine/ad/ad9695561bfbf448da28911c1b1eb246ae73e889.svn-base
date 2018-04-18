@@ -1,0 +1,64 @@
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<div class="Video_album_left">
+  <div class="Video_content_video">
+    <p class="Video_TitleVideo">ten video </p>
+
+    <br>
+  <iframe width="600" height="400" src="//www.youtube.com/embed/xcVwLrAavyA" frameborder="0" allowfullscreen></iframe>
+
+  </div>
+</div>
+<div class="Video_album_right">
+ <div class="Video_formstyle">
+   <span id="VideoID_Label1">Các video khác</span>
+ </div>
+  <div style="height: 370px; overflow-y: scroll; width: 272px ; margin: 5px 0 0 0 ">
+    <ul >
+      <li class="Video_li">
+        &lt;%&ndash;<div class="Video_thumb">   <img id="VideoID_rptVideo_ctl04_imgAnh" src="images/A7001.jpg" style="height:60px;width:70px;border-width:0px;">
+        </div>&ndash;%&gt;
+        <div class="Video_content">
+          <a  class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+        </div>
+      </li>
+      <li class="Video_li">
+        <div class="Video_content">
+          <a class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+        </div>
+      </li>
+      <li class="Video_li">  <div class="Video_content">
+        <a  class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+      </div></li>
+      <li class="Video_li">  <div class="Video_content">
+        <a  class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+      </div></li>
+      <li class="Video_li"> <div class="Video_content">
+        <a  class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+      </div></li>
+      <li class="Video_li"> <div class="Video_content">
+        <a  class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+      </div></li>
+      <li class="Video_li"> <div class="Video_content">
+        <a  class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+      </div></li>
+      <li class="Video_li"> <div class="Video_content">
+        <a  class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+      </div></li>
+      <li class="Video_li"> <div class="Video_content">
+        <a  class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+      </div></li>
+      <li class="Video_li"> <div class="Video_content">
+        <a  class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+      </div></li>
+      <li class="Video_li"> <div class="Video_content">
+        <a  class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+      </div></li>
+      <li class="Video_li"> <div class="Video_content">
+        <a  class="LinkNomal" href="index.aspx?aac=CLICK&amp;aid=CAKHUC_DETAIL&amp;ari=6&amp;lang=1&amp;menu=&amp;mid=0&amp;pid=1&amp;title=trich-phat-bieu-cua-pho-vien-truong-vien-thuy-cong-pgsts-tran-dinh-hoa-trong-buoi-le-khoi-cong-cong-trinh-cong-ngan-trieu-nhieu-loc---thi-nghe">Trích phát biểu của Phó Viện trưởng Viện Thủy công PGS.TS Trần Đình Hòa trong buổi Lễ Khởi công công trình Cống ngăn triều Nhiêu Lộc - Thị Nghè</a>
+      </div></li>
+    </ul>
+  </div>
+</div>
+
+

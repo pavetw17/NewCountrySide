@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="row-fluid" style="height: 100px">
+        <div class="span12">
+
+            <h3 class="page-title"> Blank Page
+                <small>blank page sample</small>
+            </h3>
+          <%--  <ul class="breadcrumb">
+                <li><a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span></li>
+                <li><a href="#">Sample Pages</a><span class="divider">&nbsp;</span></li>
+                <li><a href="#">Blank Page</a><span class="divider-last">&nbsp;</span></li>
+            </ul>--%>
+        </div>
+    </div>
+
+
+    <div id="dlg_qlquyen_dsquyen_show"></div>
+    <div id="dlg_qlquyen_dsquyen_them" > </div>
+    <div id="dlg_qlquyen_dstaikhoan_show"></div>
+    <div id="dlg_qlquyen_thongtintaikhoan" > </div>
+    <div id="dlg_qlvanban_phanloai_show"></div>
+    <div id="dlg_qlvanban_phanloai_them"></div>
+    <div id="dlg_qlvanban_phaply_show"></div>
+    <div id="dlg_qlvanban_phaply_them"></div>
+    <div id="dlg_qlvanban_phaply_hienthi_show"></div>
+    <div id="dlg_qlvanban_ykienchidao_show"></div>
+    <div id="dlg_qlvanban_ykienchidao_them"></div>
+    <div id="dlg_tintuchoatdong_phanloai_show"></div>
+    <div id="dlg_tintuchoatdong_phanloai_them"></div>
+    <div id="dlg_tintuchoatdong_show"></div>
+    <div id="dlg_tintuchoatdong_them"></div>
+    <div id="dlg_phanloai_thanhvien_show"></div>
+    <div id="dlg_phanloai_thanhvien_them"></div>
+    <div id="dlg_quanlychuyengia_show"></div>
+    <div id="dlg_chuyengia_them"></div>
+    <div id="dlg_kiennghi_show"></div>
+    <div id="dlg_kiennghi_them"></div>
+    <div id="dlg_phanloai_phieu_show"></div>
+    <div id="dlg_phanloai_phieu_them"></div>
+    <div id="dlg_phanloai_detai_duan_show"></div>
+    <div id="dlg_phanloai_detai_duan_them"></div>
+    <div id="dlg_phanloai_baocao_show"></div>
+    <div id="dlg_phanloai_baocao_them"></div>
+    <div id="dlg_vaitro_show"></div>
+    <div id="dlg_vaitro_them"></div>
+    <div id="dlg_phanloai_kq_show"></div>
+    <div id="dlg_phanloai_kq_them"></div>
+    <div id="dlg_phanloai_khuvuc_show"></div>
+    <div id="dlg_phanloai_khuvuc_them"></div>
+    
+</div>
+
+
+

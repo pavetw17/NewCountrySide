@@ -1,0 +1,317 @@
+package com.cwrs.ntk.models;
+
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import java.sql.Date;
+import java.util.Arrays;
+
+/**
+ * Created by VN on 3/5/2015.
+ */
+@Entity
+@javax.persistence.Table(name = "tbl_bienban_hophoidong", schema = "public", catalog = "ntm")
+public class TblBienbanHophoidongEntity {
+    private int idDetai;
+
+    public static final String BIENBAN_HOPHOIDONG_TBL = "tbl_bienban_hophoidong";
+    public static final String BIENBAN_HOPHOIDONG_ID_DETAI = "id_detai";
+    public static final String BIENBAN_HOPHOIDONG_QUYETDINH_THANHLAP_HOIDONG = "quyetdinh_thanhlap_hoidong";
+    public static final String BIENBAN_HOPHOIDONG_NGAY_RA_QUYETDINH = "ngay_ra_quyetdinh";
+    public static final String BIENBAN_HOPHOIDONG_DIADIEM = "diadiem";
+    public static final String BIENBAN_HOPHOIDONG_THOIGIAN = "thoigian";
+    public static final String BIENBAN_HOPHOIDONG_SOTHANHVIEN_HOIDONG = "sothanhvien_hoidong_comat";
+    public static final String BIENBAN_HOPHOIDONG_TONGSO_THANHVIEN = "tongso_thanhvien_hoidong";
+    public static final String BIENBAN_HOPHOIDONG_ID_THUKI = "id_thuki";
+    public static final String BIENBAN_HOPHOIDONG_NOIDUNG_LAMVIEC = "noidunglamviec";
+    public static final String BIENBAN_HOPHOIDONG_ID_TRUONGBAN_KIMEPHIEU = "id_truongbankiemphieu";
+    public static final String BIENBAN_HOPHOIDONG_ID_THANHVIEN_01 = "id_thanhvienkiemphieu01";
+    public static final String BIENBAN_HOPHOIDONG_ID_THANHVIEN_02 = "id_thanhvienkiemphieu02";
+    public static final String BIENBAN_HOPHOIDONG_ID_TOCHUC_TRUNGTUYEN = "id_tochuc_trungtuyen";
+    public static final String BIENBAN_HOPHOIDONG_ID_CHUTICH_HOIDONG = "id_chutich_hoidong";
+    public static final String BIENBAN_HOPHOIDONG_KETLUAN = "ketluan";
+    public static final String BIENBAN_HOPHOIDONG_FILE_BIENBAN = "file_bienban";
+    public static final String BIENBAN_HOPHOIDONG_TENFILE = "tenfile";
+    
+    
+//    id_detai integer NOT NULL DEFAULT nextval(('public.tbl_bienban_hophoidong_id_detai_seq'::text)::regclass),
+//    quyetdinh_thanhlap_hoidong character varying(100),
+//    ngay_ra_quyetdinh integer,
+//    diadiem character varying(200),
+//    thoigian date,
+//    sothanhvien_hoidong_comat integer,
+//    tongso_thanhvien_hoidong integer,
+//    id_thuki integer, -- lấy mã từ bảng tbl_chuyengia
+//    noidunglamviec character varying(1000),
+//    id_truongbankiemphieu integer,
+//    id_thanhvienkiemphieu01 integer,
+//    id_thanhvienkiemphieu02 integer,
+//    id_tochuc_trungtuyen integer,
+//    id_chutich_hoidong integer,
+//    ketluan character varying(1000),
+//    file_bienban bytea,
+//    tenfile character varying(100),
+    
+    @Id
+    @javax.persistence.Column(name = "id_detai")
+    public int getIdDetai() {
+        return idDetai;
+    }
+
+    public void setIdDetai(int idDetai) {
+        this.idDetai = idDetai;
+    }
+
+    private String quyetdinhThanhlapHoidong;
+
+    @Basic
+    @javax.persistence.Column(name = "quyetdinh_thanhlap_hoidong")
+    public String getQuyetdinhThanhlapHoidong() {
+        return quyetdinhThanhlapHoidong;
+    }
+
+    public void setQuyetdinhThanhlapHoidong(String quyetdinhThanhlapHoidong) {
+        this.quyetdinhThanhlapHoidong = quyetdinhThanhlapHoidong;
+    }
+
+    private Integer ngayRaQuyetdinh;
+
+    @Basic
+    @javax.persistence.Column(name = "ngay_ra_quyetdinh")
+    public Integer getNgayRaQuyetdinh() {
+        return ngayRaQuyetdinh;
+    }
+
+    public void setNgayRaQuyetdinh(Integer ngayRaQuyetdinh) {
+        this.ngayRaQuyetdinh = ngayRaQuyetdinh;
+    }
+
+    private String diadiem;
+
+    @Basic
+    @javax.persistence.Column(name = "diadiem")
+    public String getDiadiem() {
+        return diadiem;
+    }
+
+    public void setDiadiem(String diadiem) {
+        this.diadiem = diadiem;
+    }
+
+    private Date thoigian;
+
+    @Basic
+    @javax.persistence.Column(name = "thoigian")
+    public Date getThoigian() {
+        return thoigian;
+    }
+
+    public void setThoigian(Date thoigian) {
+        this.thoigian = thoigian;
+    }
+
+    private Integer sothanhvienHoidongComat;
+
+    @Basic
+    @javax.persistence.Column(name = "sothanhvien_hoidong_comat")
+    public Integer getSothanhvienHoidongComat() {
+        return sothanhvienHoidongComat;
+    }
+
+    public void setSothanhvienHoidongComat(Integer sothanhvienHoidongComat) {
+        this.sothanhvienHoidongComat = sothanhvienHoidongComat;
+    }
+
+    private Integer tongsoThanhvienHoidong;
+
+    @Basic
+    @javax.persistence.Column(name = "tongso_thanhvien_hoidong")
+    public Integer getTongsoThanhvienHoidong() {
+        return tongsoThanhvienHoidong;
+    }
+
+    public void setTongsoThanhvienHoidong(Integer tongsoThanhvienHoidong) {
+        this.tongsoThanhvienHoidong = tongsoThanhvienHoidong;
+    }
+
+    private Integer idThuki;
+
+    @Basic
+    @javax.persistence.Column(name = "id_thuki")
+    public Integer getIdThuki() {
+        return idThuki;
+    }
+
+    public void setIdThuki(Integer idThuki) {
+        this.idThuki = idThuki;
+    }
+
+    private String noidunglamviec;
+
+    @Basic
+    @javax.persistence.Column(name = "noidunglamviec")
+    public String getNoidunglamviec() {
+        return noidunglamviec;
+    }
+
+    public void setNoidunglamviec(String noidunglamviec) {
+        this.noidunglamviec = noidunglamviec;
+    }
+
+    private Integer idTruongbankiemphieu;
+
+    @Basic
+    @javax.persistence.Column(name = "id_truongbankiemphieu")
+    public Integer getIdTruongbankiemphieu() {
+        return idTruongbankiemphieu;
+    }
+
+    public void setIdTruongbankiemphieu(Integer idTruongbankiemphieu) {
+        this.idTruongbankiemphieu = idTruongbankiemphieu;
+    }
+
+    private Integer idThanhvienkiemphieu01;
+
+    @Basic
+    @javax.persistence.Column(name = "id_thanhvienkiemphieu01")
+    public Integer getIdThanhvienkiemphieu01() {
+        return idThanhvienkiemphieu01;
+    }
+
+    public void setIdThanhvienkiemphieu01(Integer idThanhvienkiemphieu01) {
+        this.idThanhvienkiemphieu01 = idThanhvienkiemphieu01;
+    }
+
+    private Integer idThanhvienkiemphieu02;
+
+    @Basic
+    @javax.persistence.Column(name = "id_thanhvienkiemphieu02")
+    public Integer getIdThanhvienkiemphieu02() {
+        return idThanhvienkiemphieu02;
+    }
+
+    public void setIdThanhvienkiemphieu02(Integer idThanhvienkiemphieu02) {
+        this.idThanhvienkiemphieu02 = idThanhvienkiemphieu02;
+    }
+
+    private Integer idTochucTrungtuyen;
+
+    @Basic
+    @javax.persistence.Column(name = "id_tochuc_trungtuyen")
+    public Integer getIdTochucTrungtuyen() {
+        return idTochucTrungtuyen;
+    }
+
+    public void setIdTochucTrungtuyen(Integer idTochucTrungtuyen) {
+        this.idTochucTrungtuyen = idTochucTrungtuyen;
+    }
+
+    private Integer idChutichHoidong;
+
+    @Basic
+    @javax.persistence.Column(name = "id_chutich_hoidong")
+    public Integer getIdChutichHoidong() {
+        return idChutichHoidong;
+    }
+
+    public void setIdChutichHoidong(Integer idChutichHoidong) {
+        this.idChutichHoidong = idChutichHoidong;
+    }
+
+    private String ketluan;
+
+    @Basic
+    @javax.persistence.Column(name = "ketluan")
+    public String getKetluan() {
+        return ketluan;
+    }
+
+    public void setKetluan(String ketluan) {
+        this.ketluan = ketluan;
+    }
+
+    private byte[] fileBienban;
+
+    @Basic
+    @javax.persistence.Column(name = "file_bienban")
+    public byte[] getFileBienban() {
+        return fileBienban;
+    }
+
+    public void setFileBienban(byte[] fileBienban) {
+        this.fileBienban = fileBienban;
+    }
+
+    private String tenfile;
+
+    @Basic
+    @javax.persistence.Column(name = "tenfile")
+    public String getTenfile() {
+        return tenfile;
+    }
+
+    public void setTenfile(String tenfile) {
+        this.tenfile = tenfile;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TblBienbanHophoidongEntity that = (TblBienbanHophoidongEntity) o;
+
+        if (idDetai != that.idDetai) return false;
+        if (diadiem != null ? !diadiem.equals(that.diadiem) : that.diadiem != null) return false;
+        if (!Arrays.equals(fileBienban, that.fileBienban)) return false;
+        if (idChutichHoidong != null ? !idChutichHoidong.equals(that.idChutichHoidong) : that.idChutichHoidong != null)
+            return false;
+        if (idThanhvienkiemphieu01 != null ? !idThanhvienkiemphieu01.equals(that.idThanhvienkiemphieu01) : that.idThanhvienkiemphieu01 != null)
+            return false;
+        if (idThanhvienkiemphieu02 != null ? !idThanhvienkiemphieu02.equals(that.idThanhvienkiemphieu02) : that.idThanhvienkiemphieu02 != null)
+            return false;
+        if (idThuki != null ? !idThuki.equals(that.idThuki) : that.idThuki != null) return false;
+        if (idTochucTrungtuyen != null ? !idTochucTrungtuyen.equals(that.idTochucTrungtuyen) : that.idTochucTrungtuyen != null)
+            return false;
+        if (idTruongbankiemphieu != null ? !idTruongbankiemphieu.equals(that.idTruongbankiemphieu) : that.idTruongbankiemphieu != null)
+            return false;
+        if (ketluan != null ? !ketluan.equals(that.ketluan) : that.ketluan != null) return false;
+        if (ngayRaQuyetdinh != null ? !ngayRaQuyetdinh.equals(that.ngayRaQuyetdinh) : that.ngayRaQuyetdinh != null)
+            return false;
+        if (noidunglamviec != null ? !noidunglamviec.equals(that.noidunglamviec) : that.noidunglamviec != null)
+            return false;
+        if (quyetdinhThanhlapHoidong != null ? !quyetdinhThanhlapHoidong.equals(that.quyetdinhThanhlapHoidong) : that.quyetdinhThanhlapHoidong != null)
+            return false;
+        if (sothanhvienHoidongComat != null ? !sothanhvienHoidongComat.equals(that.sothanhvienHoidongComat) : that.sothanhvienHoidongComat != null)
+            return false;
+        if (tenfile != null ? !tenfile.equals(that.tenfile) : that.tenfile != null) return false;
+        if (thoigian != null ? !thoigian.equals(that.thoigian) : that.thoigian != null) return false;
+        if (tongsoThanhvienHoidong != null ? !tongsoThanhvienHoidong.equals(that.tongsoThanhvienHoidong) : that.tongsoThanhvienHoidong != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = idDetai;
+        result = 31 * result + (quyetdinhThanhlapHoidong != null ? quyetdinhThanhlapHoidong.hashCode() : 0);
+        result = 31 * result + (ngayRaQuyetdinh != null ? ngayRaQuyetdinh.hashCode() : 0);
+        result = 31 * result + (diadiem != null ? diadiem.hashCode() : 0);
+        result = 31 * result + (thoigian != null ? thoigian.hashCode() : 0);
+        result = 31 * result + (sothanhvienHoidongComat != null ? sothanhvienHoidongComat.hashCode() : 0);
+        result = 31 * result + (tongsoThanhvienHoidong != null ? tongsoThanhvienHoidong.hashCode() : 0);
+        result = 31 * result + (idThuki != null ? idThuki.hashCode() : 0);
+        result = 31 * result + (noidunglamviec != null ? noidunglamviec.hashCode() : 0);
+        result = 31 * result + (idTruongbankiemphieu != null ? idTruongbankiemphieu.hashCode() : 0);
+        result = 31 * result + (idThanhvienkiemphieu01 != null ? idThanhvienkiemphieu01.hashCode() : 0);
+        result = 31 * result + (idThanhvienkiemphieu02 != null ? idThanhvienkiemphieu02.hashCode() : 0);
+        result = 31 * result + (idTochucTrungtuyen != null ? idTochucTrungtuyen.hashCode() : 0);
+        result = 31 * result + (idChutichHoidong != null ? idChutichHoidong.hashCode() : 0);
+        result = 31 * result + (ketluan != null ? ketluan.hashCode() : 0);
+        result = 31 * result + (fileBienban != null ? Arrays.hashCode(fileBienban) : 0);
+        result = 31 * result + (tenfile != null ? tenfile.hashCode() : 0);
+        return result;
+    }
+}

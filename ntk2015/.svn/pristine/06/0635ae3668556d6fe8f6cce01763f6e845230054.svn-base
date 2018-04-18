@@ -1,0 +1,928 @@
+/* 
+
+Theme Name: FearlessTheme Version - updated 11/2010
+
+Theme URI: http://fearlessflyer.com
+
+Version: 5.0
+
+Author: Michael Soriano
+
+*/
+.underlined { text-decoration:underline;}
+img.noborder{border:none;}
+img.alignleft {margin:0px 20px 5px 0; float:left;}
+img.alignright {margin:0 0 5px 20px; float:right;}
+img.alignnone{margin:10px 0 10px 0; clear:both;}
+
+
+#follow-me{width:20px; height:150px; background:#999999; position:fixed; right:0; top:200px;}
+
+#special-message {padding:10px  25px 25px 76px;  text-align:left; display:none; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/comment_add_48.png) no-repeat #F7F7F4; border:1px solid #ececec; background-position:15px 8px; margin-bottom:19px; font-size:12px; line-height:17px;}
+#special-message em {font-size:10px; font-style:normal;}
+#close-me {float:right; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/cross-circle-frame.png) no-repeat bottom right; width:66px; height:16px; font-size:10px; position:relative; top:15px; left:15px;}
+
+.donate-message {padding:20px  25px 25px 87px;  text-align:left; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/coffee.png) no-repeat #F7F7F4; border:1px solid #ececec; background-position:20px 15px; margin-bottom:35px; font-size:12px; line-height:17px; text-shadow: 0 1px 0 #fff; -moz-border-radius:4px; -webkit-border-radius:4px;}
+.donate-message form {float:right;}
+.donate-message.in-downloads{margin:5px 0 15px 0; }
+input.input-btn-paypal{position:relative; top:-14px;}
+
+#demotip {display:none; background:transparent url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/black_arrow.png); font-size:13px; height:70px; width:160px; padding:35px 25px 15px 25px; color:#990000; font-family:arial; font-weight:bold; text-shadow:1px 1px 0 #fff; text-align:center; z-index:9999;}
+.comments-bubble { background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/speech_bubble_482.png) no-repeat; width:48px; height:36px; float:right; font-size:24px; font-weight:bold; text-align:center; padding:10px 0 0 0; margin:0 0 0 15px; font-family:helvetica; text-shadow:1px 1px 0 #ccc; letter-spacing:-1px; }
+
+/*theme my login plugin*/
+div#tml-page.login {background:#f5f5f5; border:1px solid #e0e0e0; padding:1px 3px 3px 16px; margin-top:25px;  -moz-border-radius: 8px; -webkit-border-radius:8px; }  
+div#tml-1.login{background:#f5f5f5; border:1px solid #e0e0e0; padding:10px 14px 14px 14px; margin-top:25px;  -moz-border-radius: 8px; -webkit-border-radius:8px;}
+.login p.error {padding:10px 15px 10px 42px; border: 1px solid #c00; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/close_32.png) no-repeat #ffebe8;  background-position:5px 5px; color: #333; margin:15px 15px 5px 0; min-height:26px; }
+
+.login p.message {padding:10px 15px 10px 42px; border: 1px solid #e6db55; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/info_button_32.png) no-repeat #ffffe0; background-position:5px 5px; color: #333; margin:15px 15px 5px 0;}
+
+.login form label {display: block; font-size:18px;}    
+.login form p.forgetmenot label {display: inline;}
+input.input {padding:6px; border:1px solid #CCCCCC; margin:8px 0 5px 0; color: #666666; font-size:18px;}
+#access-form {clear:both; font-family:Georgia, arial, helvetica; font-style:italic; padding:13px 0 0 0;} 
+/*theme my profile plugin*/
+#profile {padding:0;}
+form#your-profile {text-align: left;}
+form#your-profile h3 {letter-spacing:normal; text-shadow:none; color:#666666; background:url("border-e.gif") bottom left no-repeat; padding:0 0 45px 0; margin-bottom:5px;}
+input.regular-text, input#pass1, input#pass2, select#display_name, textarea#description {padding:4px; border:1px solid #CCCCCC; margin:8px 0 5px 0; color: #666666;}
+
+table.form-table {margin-bottom:25px;}
+table.form-table label{font-weight:normal; padding-right:25px; margin-right:25px;}
+span.description {display:block; font-family:georgia; font-size:11px; font-style:italic; color:#666666;}
+.description.indicator-hint {position:relative; left:8px; font-family:georgia; line-height:15px; font-size:11px; font-style:italic; color:#666666;}
+
+#profile .error {padding: 5px; border: 1px solid #ff0000; background-color: #f08080;}
+#profile .message {padding: 5px; border: 1px solid #ffff00; background-color: #ffffe0;}
+#pass-strength-result {
+border-style: solid;
+border-width: 1px;
+float: left;
+margin: 12px 5px 5px 1px;
+padding: 3px 5px;
+text-align: center;
+width: 200px;
+}
+
+#pass-strength-result.strong,
+#pass-strength-result.short {
+font-weight: bold;
+}
+
+#pass-strength-result {
+background-color: #eee;
+border-color: #ddd !important;
+}
+
+#pass-strength-result.bad {
+background-color: #ffb78c;
+border-color: #ff853c !important;
+}
+
+#pass-strength-result.good {
+background-color: #ffec8b;
+border-color: #fc0 !important;
+}
+
+#pass-strength-result.short {
+background-color: #ffa0a0;
+border-color: #f04040 !important;
+}
+
+#pass-strength-result.strong {
+background-color: #c3ff88;
+border-color: #8dff1c !important;
+}
+/*tdo mini forms*/
+.tdomf_form {margin:25px 0 0 0;}
+.tdomf_form input, .tdomf_form textarea{padding:6px; border:1px solid #CCCCCC; margin:8px 0 5px 0; color: #666666; font-size:18px;}
+.tdomf_form legend {display:none;}
+.tdomf_form label {font-size:14px;}
+
+.tdomf_form label.required {font-weight:normal;}
+#tdomf_form1_message.tdomf_form_message {padding:10px 15px 10px 42px; border: 1px solid #e6db55; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/info_button_32.png) no-repeat #ffffe0; background-position:5px 5px; color: #333; margin:25px 0 25px 0;}
+#theme-my-login h2 {display:none;}
+.post-row ul.tml-links {padding:0; margin:0 0 10px 0;  list-style:none;}
+#theme-my-login  ul.tml-links li {list-style:none; padding-bottom:5px;}
+p.submit {clear:both; margin-bottom:15px;}
+p.forgetmenot label, .tdomf_form small  {font-family:georgia; font-size:11px; font-style:italic; color:#666666; line-height:13px;}
+
+ul.tml-user-links {padding:2px 0 0 0; margin:0; list-style:none;}
+#tml-page img.avatar {margin-top:17px;}
+h3#welcome-msg{font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; font-weight:normal; text-shadow:none; color:#666666; letter-spacing:normal; line-height:29px; position:relative; top:-16px;}
+fieldset#first-indent{background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/first-indent.jpg) top left no-repeat; padding-left:68px; width:485px; overflow:hidden;}
+fieldset#sec-indent{background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/sec-indent.jpg) top left no-repeat; padding-left:68px; width:485px; overflow:hidden;}
+fieldset#third-second{background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/third-indent.jpg) top left no-repeat; padding-left:68px; height:56px; font-family:georgia; font-size:11px; font-style:italic; color:#666666; line-height:20px; width:485px; overflow:hidden;}
+input#iagree {margin:2px 5px 0 0; }
+table.tdomf_buttons {clear:both; margin-top:25px;}
+input#tdomf_form1_send {clear:both; margin-top:15px;}
+
+
+
+* {margin:0; padding:0;}
+html {overflow-x: hidden;}
+a img {border:none;}
+a {color:#990000; text-decoration:none; outline: none;}
+a:hover{ color:#333333;}
+a:active {outline:none;}
+:focus { -moz-outline-style:none;}
+.alignleft {float:left;}
+.alignright {float:right;}
+.alignnone {clear:both;}
+
+.border1px {padding:20px 0 20px 0; }
+body {background:url(wrap-rep.gif) repeat-x; font-family: Arial, Helvetica, "Lucida Grande","Lucida Sans Unicode","bitstream vera sans","trebuchet ms", sans-serif; font-size:13px; line-height:16px;}
+#wrap-top {width: 940px; padding:0 19px 0 19px; margin:0 auto; background: url(main-bg0.jpg) no-repeat #FFFFFF; overflow:hidden; }
+#wrap-bottom {height:456px; background:url(foot0000.gif) bottom left repeat-x #FFFFFF;}
+
+
+/*start header*/
+
+#header {height:130px; position:relative;}
+#logo { height:111px;float:left; position:relative; top:0; left:-20px;}
+#logo a {background:url(logo-wit.png); height:111px; width:379px; text-indent:-9999px; display:block;  }
+#logo a:hover {background-position:0 -111px;}
+
+
+
+#mainnav {width:605px;  position:absolute; top:38px; left:368px; }
+
+#mainnav ul.topnav {width:605px;}
+#mainnav ul.topnav li {list-style:none; float:left;}
+
+ul.topnav li a {display:block; background-image:url(navigati.png); line-height:20px; }
+ul.topnav li small {position:absolute; top:5px; font-size:10px;  color:#CCCCCC; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic;}
+
+
+#mainnav ul li#home a{width:62px; background-position:0 0; height:33px; padding:22px 0 0 43px;  font-family:  arial, helvetica; font-size:20px; font-weight:bold; color:#797979; }
+#mainnav ul li#home a:hover{background-position:0 -55px;  color:#545454;}
+#mainnav ul li#home small {left:44px;}
+#mainnav ul li#about a{width:62px;  background-position:-104px 0; height:33px; padding:22px 0 0 38px;  font-family:  arial, helvetica; font-size:20px; font-weight:bold; color:#797979; }
+#mainnav ul li#about a:hover{background-position:-104px -55px;  color:#545454;}
+#mainnav ul li#about small {left:144px;}
+#mainnav ul li#work a{width:60px;  background-position:-204px 0; height:33px; padding:22px 0 0 50px;   font-family:  arial, helvetica; font-size:20px; font-weight:bold; color:#797979; }
+#mainnav ul li#work a:hover {background-position:-204px -55px;  color:#545454;}
+#mainnav ul li#work small {left:255px;}
+#mainnav ul li#blog a.b{width:96px; background-position:-313px 0; height:33px; padding:22px 0 0 42px;   font-family: arial, helvetica; font-size:20px; font-weight:bold; color:#797979; }
+#mainnav ul li#blog a.b:hover {background-position:-313px -55px;  color:#545454;}
+#mainnav ul li#blog small {left:359px;}
+#mainnav ul li#freebies a{width:99px;  background-position:-446px 0; height:33px; padding:22px 0 0 40px;   font-family:  arial, helvetica; font-size:20px; font-weight:bold; color:#797979; } 
+#mainnav ul li#freebies a:hover {background-position:-446px -55px;  color:#545454;}
+#mainnav ul li#freebies small {left:494px;}
+#mainnav ul li#blog ul.subnav{display:none; position:absolute; top:51px; left:325px; z-index:9999;  }
+#mainnav ul li#blog ul.subnav li {
+display:block;
+list-style: none; 
+clear:both;
+text-indent:-1px; 
+margin: 0; padding: 10px 5px 10px 35px;    
+width: 125px;  
+background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/arrow-right.gif) no-repeat #000; 
+background-position:12px 9px;
+border-bottom:1px dashed #333333;
+box-shadow: 0px 3px 3px rgba(0,0,0,0.2);-moz-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);-webkit-box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
+ }
+#mainnav ul li#blog ul.subnav li.ls{
+
+border-bottom-right-radius:5px;
+-moz-border-radius-bottomright:5px;
+border-bottom-left-radius:5px;
+-moz-border-radius-bottomleft:5px;
+border-bottom:none;
+padding-bottom:15px;
+
+}
+#mainnav ul li#blog ul.subnav li a {font-family:Arial, Helvetica, sans-serif; font-weight:bold; color:#666666; font-size:14px; line-height:14px; background:#000000; background-image:none;}
+#mainnav ul li#blog ul.subnav li a:hover {color:#999999;}
+
+
+
+#mini-nav{position:absolute; left:700px;   padding:12px 20px 8px 0; display:none;}
+#mini-nav a{font-family:verdana; font-size:11px; font-style:italic; text-shadow:1px 1px 0 #000; color:#ad3838;}
+#mini-nav a:hover{ color:#d72323;}
+#mini-nav ul li{float:left; list-style:none; padding:0 0 0 20px; line-height:11px;}
+
+
+/*search form*/
+#searchform {clear:both; background:url(sidebar-.png) no-repeat bottom left; padding:2px 0 30px 10px; margin:0 0 15px 13px; height:35px;}
+#searchform small {color:#000; font-size:9px; font-family: "Lucida Grande","Lucida Sans Unicode","bitstream vera sans","trebuchet ms",Arial,Helvetica,sans-serif; font-weight:normal;  }
+#searchform .inputs {border:1px solid #828282; padding:3px 5px; background:url(searchfi.jpg) repeat-x #d8d7d8; color: #000 ; margin:0 3px 0 0;   -moz-border-radius:2px; -webkit-border-radius:2px; -moz-box-shadow: 0px 10px 10px -10px #000;}
+.go{ background:url(search_b.png); width:32px; height:32px; border:0px; }
+
+
+.main-container {width:576px; float:left;  padding:28px 2px 0 20px; line-height:20px; min-height:900px;}
+.main-container p {padding:10px 0 10px 0; color:#666666;}
+.main-container h3 {padding:18px 0 9px 0; font-size:24px;  font-weight:normal; font-family:Arial, Helvetica, sans-serif;line-height:28px; border-bottom:1px dashed #ccc; margin-bottom:9px; }
+.main-container h4 {padding:18px 0 18px 0; font-size:24px;  font-weight:normal; font-family:'Droid Sans', Arial, Helvetica, sans-serif; line-height:28px; border-bottom:none;}
+.main-container a {font-weight:bold; color:#333333;}
+.main-container a:hover{color:#990000;}
+.main-container p small {line-height:13px; color:#000000;}
+
+
+.main-container br {line-height:1px; padding:0; margin:0;}
+.main-container h6 {padding:5px 0 0 0; font-size:18px; font-weight:normal; font-family:Arial, Helvetica, sans-serif; line-height:26px; margin-top:10px; margin-bottom:5px; }
+.main-container h6 a {color:#000; font-weight:normal;}
+.main-container h6 a:hover {color:#666;}
+.main-container blockquote {font-family:georgia; font-style:italic; line-height:26px; color:#999999; border-left:3px solid #CCCCCC; margin:15px 0 15px 25px; padding-left:25px;}
+.main-container h2 {font-family:georgia; font-style:italic; font-size:16px; font-weight:normal; text-shadow:1px 1px 0 #ccc; line-height:20px; margin:10px 0; }
+
+.special {padding:12px;  text-align:left;  background: #ececec; border:1px solid #d7d7d7; margin:20px 0; font-size:12px; line-height:17px; -moz-border-radius:4px 4px 4px 4px; text-shadow: 0 1px 0 #fff}
+.main-container .special a{color:#990000;}
+.main-container .special a:hover {color:#333333;}
+
+.post-row {padding-bottom:10px; margin-bottom:10px;}
+.post-row .post-excerpt {height:94px; overflow:hidden;}
+.post-row-with-thumb {background:url(border-e.gif) bottom left no-repeat; padding-bottom:46px; margin-bottom:5px; clear:both; overflow:hidden;} 
+.post-row ul {padding:15px 0 15px 32px;}
+.post-row .post-title {margin-bottom:20px;}
+
+
+.post-content ul li {padding-bottom:15px;}
+.post-content ul li.yrpLi{padding-bottom:6px; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/1323143596_tick-button.png) no-repeat; list-style:none; padding-left:26px; font-size:15px; background-position:0 1px; margin-left:-24px;}
+.post-content ul li.yrpLi a{color:#990000;}
+.post-content ul li.yrpLi a:hover {color:#000000;}
+
+
+
+.post-content strong {color:#000000;}
+
+.post-title {font-size:32px; line-height:36px;  font-weight:bold; font-family:'Droid Sans', Arial, Helvetica, sans-serif;   }
+.post-title small{color:#666666; font-size:20px;}
+.post-title a {color:#000000;}
+.post-title-in-category {font-size:24px; line-height:28px; font-weight:bold;  font-family:'Droid Sans', Arial, Helvetica, sans-serif;  margin-bottom:15px; text-shadow:-1px -1px 0 #fff;  }
+.post-title-in-category a {color:#000000;}
+.post-title a:hover, .post-title-in-category a:hover {color:#333333;}
+
+.post-meta-data { color:#999999; padding:5px 0 5px 0; font-size-adjust:none; font-size:11px; font-family:verdana;}
+.post-title-in-page {font-size:32px; line-height:36px; font-weight:bold; font-family: 'Droid Sans', Arial, Helvetica, sans-serif;  margin-bottom:10px;}
+.post-title-in-page a{color:#000000;}
+.page-titles {font-size:32px; line-height:36px; font-weight:bold; padding:0 0 25px 0; color:#999999; font-family: 'Droid Sans', Arial, Helvetica, sans-serif;}
+.feature-post .post-excerpt {height:70px; overflow:hidden; }
+
+/*single-specific*/
+
+.post-content {clear:both; margin:0 0 15px 0; background:url("border-e.gif") no-repeat left bottom; padding-bottom:40px;}
+.post-content p img {border:1px solid #ccc;}
+.post-content h5 {font-family:georgia; font-size:20px; font-style:italic; font-weight:normal; color:#990000; padding:10px 0 10px 0; text-shadow:1px 0px 0 #000;}
+.post-content p:first-child {font-family:rockwell,  'bitstream vera sans', georgia; font-size:16px; line-height:24px; color:#333333;}
+ul.commentlist {background:url("border-e.gif") no-repeat left bottom; padding-bottom:65px;}
+ul.commentlist li {list-style:none; padding:7px 10px 0 0;}
+
+ul.commentlist li code {color:#000; font-size:11px; line-height:13px; padding:12px 0 12px 0; display:block; clear:both;}
+
+li.depth-2 {border:none;}
+.comment { margin:10px 0 10px 0; min-height:100px; padding:10px;}
+#comments {font-size:28px; line-height:40px; padding:0 0 25px 0; font-weight:bold;}
+
+.comment-meta a {color:#999999; padding:0 0 5px 0; font-size:10px; font-family:georgia, verdana; font-style:italic; line-height:12px;}
+.avatar {float:left; margin:5px 8px 0 0; padding:3px; border:1px solid #CCCCCC; }
+.children {padding:0 0 0 20px; border-left:#CCCCCC 1px solid; margin-left:20px;}
+.comment-body p {padding:2px 0 0 0;}
+.reply {margin-top:5px; }
+.reply a {color:#FFFFFF; padding:2px 7px; margin:7px 0 0 0; background:#999999; font-size:10px; -moz-border-radius:2px;text-shadow:0 1px 0 #000;   }
+cite {font-weight:bold; text-transform:uppercase; font-style:normal;} 
+cite a {color:#990000;}
+#adsense{width:468px; height:60px; padding:0px 0 8px 15px; margin:0 auto; float:left;}
+#adsense2{width:528px; clear:both; height:60px; padding:0px 0 30px 48px; margin:0 auto; float:left;}
+#googleads300 {clear:both; width:576px; margin:5px 0 20px 0; position:relative;}
+.twtm{float:right; padding:0 15px 0 0px; position:relative; top:0px;}
+#social-column {width:105px;  position:absolute; right:-25px; top:20px; }
+
+
+
+/*author*/
+/*local
+#comment-2548 .comment-body {-moz-border-radius:4px 4px 4px 4px; background:none repeat scroll 0 0 #ECECEC; padding:10px 20px 15px 20px; border:1px solid #D7D7D7;}
+#comment-2548 .comment-body .comment-meta a { color:#333333;}
+#comment-2548 .comment-body a {text-shadow:0 1px 0 #FFFFFF;}
+#comment-2548 .comment-body .reply a{text-shadow:0 1px 0 #000}
+*/
+/*live*/
+.commentlist li.bypostauthor .comment-body, .commentlist li.depth-2.comment-author-mks6804 .comment-body {-moz-border-radius:4px 4px 4px 4px; background:none repeat scroll 0 0 #ECECEC; padding:10px 20px 15px 20px; border:1px solid #D7D7D7;}
+.commentlist li.bypostauthor .comment-body .comment-meta a { color:#333333;}
+.commentlist li.bypostauthor .comment-body a {text-shadow:0 1px 0 #FFFFFF;}
+.commentlist li.bypostauthor .comment-body .reply a{text-shadow:0 1px 0 #000}
+
+/*pingbacks*/
+
+#pingbackcontainer {padding:15px 20px 20px 20px;  text-align:left; background:#F7F7F4; border:1px solid #ececec;  margin-bottom:35px; font-size:12px; line-height:17px; text-shadow: 0 1px 0 #fff; -moz-border-radius:4px; -webkit-border-radius:4px;}
+#pingbackcontainer h4#pings {font-size:20px; font-weight:bold; margin-bottom:8px; padding:0 0 5px 0; border-bottom:1px dashed #CCCCCC;}
+ul.pinglist{padding:0; margin:0; }
+ul.pinglist li{list-style:none; padding:0 0 2px 0;}
+#pingbackcontainer a {color:#990000;}
+#pingbackcontainer a:hover {color:#333333;}
+
+
+#commentform p{padding:0;}
+#commentform {padding:35px 20px 35px 30px; overflow:hidden; clear:both; border-radius:6px;   -moz-border-radius:6px; -webkit-border-radius:6px; background:#666666; border:1px solid #000; }
+.comment-form-labels {font-family:arial; font-size:14px; font-style:italic; color:#FFFFFF; text-shadow:1px 1px 0 #000;
+
+}
+#commentform label {font-family:arial; font-size:12px; color:#FFFFFF;}
+.comment-form-labels small{font-size:10px; color:#FFFFCC; text-shadow:none; margin-left:3px;}
+.comment-form-labels small.optional{color:#FFFFCC;}
+
+.comment-form-input-fields {padding:5px 10px; margin:0 12px 10px 0; background:#F7F7F4; color: #666666; font-size:17px; font-family:arial; border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; width:220px; -moz-box-shadow: 0px 1px 0 1px #000; border:none;	}
+.comment-form-input-fields.website{width:492px;}
+.comment-form-input-fields.comm-field{width:492px; height:100px;}
+.plsnote {font-family:verdana; line-height:12px; clear:both; margin:15px 0; display:block; color:#999999;}
+
+.field-block {width:251px; float:left; overflow:hidden;}
+.field-block.first{margin-right:20px;}
+
+#respond {margin:40px 0 20px 0;}
+#respond h3 {font-size:28px; line-height:40px; padding:0; font-weight:bold; margin:15px 0 35px 0; font-family:'Droid Sans', Arial, Helvetica, sans-serif; border-bottom:none; margin-bottom:35px;}
+
+#submit {
+	background: #7b0000 url(alert-ov.png) repeat-x; 
+	display: inline-block; 
+	color: #fff; 
+	text-decoration: none;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	font-family:Arial, Helvetica, sans-serif;  font-weight:bold;
+	text-transform:capitalize;
+	font-size:16px;
+	padding:5px 14px 6px;
+	border:none;
+	margin-bottom:15px;
+
+}
+#submit:hover {background:#222 url(alert-ov.png) repeat-x;}
+#submit:active {top:1px;}
+
+.ads-horiz {padding:25px 0 25px 45px;}
+
+#recent-comments-ul {padding:0 5px 0 5px;}
+#recent-comments-ul li {padding:12px 0 12px 0; line-height:15px; border-bottom:1px dashed #CCCCCC; min-height:20px; list-style:none;}
+.kjgrcGravatar {float:left; padding:3px 6px 0 0;}
+
+
+
+/*start sidebar*/
+
+.sidebar {width:313px; min-height:500px;  float:left; padding:15px 0px 0 6px; margin-left:23px; background: url(sidebar-.gif) top left no-repeat; }
+.sidebar.about {background: url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/sidebar-about.jpg) top left no-repeat; min-height:850px;}
+.sidebar.work {background: url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/sidebar-work.jpg) top left no-repeat; min-height:850px;}
+.sidebar.contribute {background: url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/sidebar-contribute.jpg) top left no-repeat; min-height:850px;}
+.sidebar.downloads {background: url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/sidebar-freebies.jpg) top left no-repeat; min-height:850px;}
+
+#about-div{background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/transp.png); position:relative; top:370px; color:#FFFFFF; left:-5px; width:318px; border-top:1px solid  #333333;}
+#about-div p {padding:0 20px 15px 20px; font-family:Georgia, "Times New Roman", Times, serif; color:#CCCCCC; }
+#about-div p small {display:block; font-family:Arial, Helvetica, sans-serif; padding:10px 0 10px 0; color:#FFFFCC; font-style:normal; font-size:11px;}
+#about-div h3{font-size:16px; text-transform:uppercase; line-height:16px; font-family:arial; text-shadow:1px 1px 0 #000; padding:15px 20px 10px 20px;}
+
+.sidebar a h3{font-size:24px; line-height:22px; padding:3px 0 5px 0; letter-spacing:-1px;}
+.sidebar p {font-size:11px;}
+#sidebarimg {padding:5px 0 0 10px;}
+.sidebar-thumbs {float:left; padding:2px 15px 8px 0; width:100px; height:100px;}
+.sidebar .post-row-in-sidebar {padding:10px 15px 10px 15px;}
+p.with-border {background: url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/border-sidebar.png) no-repeat bottom left; padding-bottom:25px;}
+.sidebar-btns {width:283px; height:53px; padding:15px 0 0 13px; clear:both;}
+.sidebar-btns #subscribe-btn {background: url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/subscribe-btn.png); width:283px; height:53px; display:block; text-indent:-9999px;}
+.sidebar-btns #twitter-btn {background: url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/twitter-btn.png); width:283px; height:53px; display:block; text-indent:-9999px;}
+#email-box {width:293px; height:124px; background:url(email-bo.png); margin:15px 0 10px 9px;  }
+.email-input {border:1px solid #545454; padding:2px; position:relative; top:80px; left:22px;}
+.email-submit-btn { background:url(submitbt.png); width:65px; height:23px; border:0px; position:relative; top:80px; left:30px;}
+#comment_mail_notify {margin-right:5px;}
+
+#facebookbox {margin:0 0 35px 10px;}
+
+.ads-125 {clear:both; margin:10px 0 10px 13px; overflow:hidden;}
+.ads-125 ul li {list-style:none; float:left;}
+.ads-125 ul li img {margin:11px 0 0 0;  padding:4px; border:1px solid #999; background:#eaeaea; }
+.ads-125 ul li img:hover {background:#fff;}
+.ads-125 ul li.lefty img {margin-right:11px;}
+
+a.new-ads-125{ padding:4px; border:1px solid #999; width:125px; height:125px; display:inline-block; background:#ebebeb; margin:3px 0 0 0;}
+a.new-ads-125:hover {background:#FFFFFF;}
+ 
+a.ad1.odd{padding:4px; border:1px solid #999; background:#eaeaea; margin:3px 11px 25px 13px;}
+a.ad1.odd:hover{background:#fff;}
+a.ad1.even{padding:4px; border:1px solid #999; background:#eaeaea; margin:3px 0 25px 0; text-align:center; text-shadow:1px 1px 0 #fff; font-family:'Droid Sans'; font-weight:bold; font-size:16px; line-height:16px;}
+
+#organic-tabs {clear:both; width:276px; margin:30px 0 10px 15px; padding-bottom:25px;}
+#organic-tabs ul { list-style: none; }
+#organic-tabs ul li a { display:block;  }
+#organic-tabs ul li a:hover {}
+#organic-tabs ul li:last-child a { border: none; }
+
+
+
+#explore-nav { overflow: hidden; margin: 0 0 12px 0; border-bottom:1px solid #000; padding:0; }
+#explore-nav li {float: left; margin: 0 5px 0 0; }
+
+#explore-nav li#ex-tags { margin-right: 0; }
+div#taglist {padding:5px 0;  }
+div#taglist a {font-family: 'Droid Sans', Arial; font-weight:bold;  text-shadow:1px 1px 0 #eeeeee;}
+
+#explore-nav li a { display: block; padding:6px 13px; background: #000; color: white; font-size: 14px; font-weight:bold; text-align: center; border: 0; font-family:'Droid Sans', arial; text-transform:uppercase; text-shadow:0 1px 0 #000;}
+#explore-nav li a:hover { background-color: #111; }
+#recentcomments { display: none; }
+
+#explore-nav li#ex-popular {margin-left:4px;}
+#explore-nav li#ex-popular a.current { background-color: #d30000; color: white; -moz-box-shadow: inset 0 -15px 10px -15px #666;}
+#explore-nav li#ex-comments a.current { background-color: #d30000; color: white;  -moz-box-shadow: inset 0 -15px 10px -15px #666;}
+#explore-nav li#ex-tags a.current { background-color: #d30000; color: white;  -moz-box-shadow: inset 0 -15px 10px -15px #666;}
+#all-list-wrap {padding:0 15px 0 5px;}
+
+.sidebar-btns-new{width:280px; overflow:hidden; margin:33px 0 5px 13px; padding-bottom:8px; }
+.sidebar-btns-new ul li {list-style:none; height:35px; border-bottom:1px dashed #999999; line-height:12px; padding:5px 0 8px 40px; margin-bottom:10px;}
+.sidebar-btns-new ul li#rssfeed{ background:url(rss_3200.png) no-repeat top left;  background-position:0 -2px;}
+.sidebar-btns-new ul li#twitterbtn{ background:url(twitter_.png) no-repeat top left; background-position:0 -2px;}
+.sidebar-btns-new ul li#facebookbtn{ background:url(facebook.png) no-repeat top left;  background-position:0 -2px; border:none;}
+.sidebar-btns-new ul li small {display:block; clear:both; margin-top:5px; font-size:10px;}
+.sidebar-btns-new ul li a {font-family:'Droid Sans', Arial; font-weight:bold; font-size:20px; text-shadow:0 1px 0 #ebebeb;  }
+
+
+
+/*popular*/
+ul#popular {padding-top:8px;}
+ul#popular a {color:#000000; font-size:15px; font-weight:bold; padding-top:5px; text-shadow:1px 1px 0 #eeeeee; }
+ul#popular a:hover {color:#d30000;}
+ul#popular li {padding:0 0 5px 0; clear:both; height:62px; overflow:hidden;}
+
+.pop-image{padding:3px; border:1px solid #CCCCCC; -moz-border-radius:2px; background:#FFFFFF; float:left; margin:3px 10px 2px 0; position:relative;}
+
+ 
+/*recentcomments*/
+img.kjgrcGravatar {float:left; padding:2px; border:1px solid #ccc; margin:3px 5px 0 0;}
+ul#recentcomments {padding-top:8px;}
+ul#recentcomments li {padding:0 0 8px 0; clear:both; border-bottom:1px dashed #CCCCCC; margin-bottom:8px; font-style:italic;}
+ul#recentcomments li:last-child {border-bottom:none;}
+ul#recentcomments li a.auth {display:inline; text-transform:uppercase; font-style:normal; font-weight:bold; font-size:11px;} 
+
+/*start footer*/
+#footer {width: 940px; padding:100px 18px 0 18px; margin:0 auto; height:356px; background: url(footer-g.png) no-repeat bottom right; }
+p#quote{font-size:11px; font-family:georgia, helvetica, arial, sans-serif; color:#000; padding:30px 20px 0 20px; font-style:italic;}
+p#quote a{text-shadow:1px 1px 0 #fff;}
+#tagcloud {padding: 0 20px 0 20px;}
+#tagcloud a {font-family:arial; color:#666666; font-weight:bold; text-shadow:0 1px 0 #fff;}
+#tagcloud a:hover{color:#990000;}
+#tagcloud h3{font-family:'Droid Sans',Arial,Helvetica,sans-serif; font-size:32px; text-shadow:1px 1px 0 #CCCCCC; letter-spacing:-1px; clear:both; margin:0 0 25px 0;}
+
+#footer-navigation{padding:56px 0 25px 0; margin:32px 20px 0 20px; position:relative;}
+#footer-navigation ul li{float:left; list-style:none; margin-right:15px;}
+#footer-navigation ul li a {color:#CCCCCC; font-family:'Droid Sans', arial; font-size:15px; text-transform:capitalize; text-shadow:1px 1px 1px #000;}
+#footer-navigation ul li a:hover{color:#999999;}
+p#copyright {padding:0 20px; color:#999999; font-size:10px; position:relative; top:-4px;}
+p#copyright a {color:#999;}
+p#copyright a:hover{color:#CCCCCC;}
+
+
+
+
+.feature-post {padding-bottom:45px; background:url(border-e.gif) bottom left no-repeat; }
+.column-left {width:272px; margin-right:14px; min-height:500px;float:left;}
+.column-right {width:272px; margin-left:14px;  min-height:500px; float:left; }
+img.smaller-feature-image-in-archive {float:right; margin:3px 0 5px 18px; border:1px solid #CCCCCC; padding:5px; -moz-border-radius:4px;}
+img:hover.smaller-feature-image-in-archive {background:#eaeaea;}
+
+img.smaller-feature-image-in-single{float:left; border:1px solid #CCCCCC; padding:5px; -moz-border-radius:4px;}
+img:hover.smaller-feature-image-in-single {background:#eaeaea;}
+a.single-image2 {float:left;}
+
+.smaller-feature-image-in-archive.last {float:left; margin:22px 18px 5px 0;}
+.feature-image {margin:0 0 25px 0; width:576px; height:323px;border:1px solid #ccc;}
+.feature-post .feature-image {margin:14px 0 10px 0; width:576px; height:323px;border:1px solid #ccc;}
+
+
+/*contact form*/
+.contact-form .post-title-in-page {padding:20px 0 20px 0; font-size:34px;}
+.contact-form p {padding:0; margin:0; font-family:georgia; font-style:italic; color:#999999; text-shadow:1px 1px 1px #fff;}
+span.req{font-size:10px; color:#FFFFCC; text-shadow:none;}
+.wpcf7 {padding:35px 20px 35px 30px; overflow:hidden; clear:both; border-radius:6px; -moz-border-radius:6px; -webkit-border-radius:6px; background:#666666; border:1px solid #000; }
+
+.wpcf7 select{padding:2px 2px 2px 5px;  margin:0 12px 20px 0; background:#F7F7F4; color: #666666; font-size:17px; font-family:arial;  -moz-border-radius:4px; -webkit-border-radius:4px; width:220px; -moz-box-shadow: 0px 1px 0 1px #000;border:none;}
+
+.wpcf7 p {float:left; color:#FFFFFF; text-shadow:1px 1px 0 #000; font-style:italic; font-size:14px; padding:0;}
+.wpcf7 p input {padding:5px 10px; border:1px solid #ECECEC; margin:0 12px 10px 0; background:#F7F7F4; color: #666666; font-size:17px; font-family:arial;  -moz-border-radius:4px; -webkit-border-radius:4px; width:220px; -moz-box-shadow: 0px 1px 0 1px #000;}
+.wpcf7 textarea { border:none; margin:0 12px 10px 0; background:#F7F7F4; color: #666666; font-size:17px; font-family:arial;  -moz-border-radius:4px; -webkit-border-radius:4px;  width:480px; height:100px; padding:7px 10px; -moz-box-shadow: 0px 1px 0 1px #000;}
+
+
+.wpcf7 p.subject-field input {width:480px;}
+.wpcf7 p.submit-btn {clear:both; display:block;}
+
+
+.wpcf7 p.submit-btn input {background: #7b0000 url(alert-ov.png) repeat-x; 
+	display: inline-block; 
+	color: #fff; 
+	text-decoration: none;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	font-family:Arial, Helvetica, sans-serif;  font-weight:bold;
+	text-transform:capitalize;
+	font-size:16px;
+	padding:5px 14px 6px;
+	border:none;
+	margin-bottom:5px;}
+
+.wpcf7 p.submit-btn input:hover {background-image:none;}
+.wpcf7 p.submit-btn input:active {top:1px;}
+
+img.wpcf7-captcha-captcha-897 {border:3px solid #fff; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; box-shadow:0 1px 0 1px #000000; -moz-box-shadow:0 1px 0 1px #000000; -webkit-box-shadow:0 1px 0 1px #000000; margin:10px 0 15px 0;}
+
+
+.wpcf7-response-output {clear:both; margin:20px 0; padding:3px 10px 5px 30px; position:relative; top:20px; font-family:'Droid Sans',Arial,Helvetica,sans-serif; font-size:18px; font-weight:bold; color:#FFFFFF;}
+.wpcf7-response-output.wpcf7-mail-sent-ok {background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/accepted_48.png) top left no-repeat;}
+.wpcf7-response-output.wpcf7-validation-errors { background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/warning_48.png) top left no-repeat;}
+.wpcf7-validates-as-required {color:#990000;}
+.wpcf7-not-valid-tip-no-ajax {font-size:10px;}
+
+
+/*contact-page*/
+
+.smallcode { font-family:georgia; color: #666666; font-size:11px;}
+.tweetmeme_button {float:right; padding:0 0 0 5px;}
+
+.navigation {position:relative; top:-6px; margin:25px 0 25px 0; height:25px;}
+.navigation a{
+	background: #7b0000 url(alert-ov.png) repeat-x; 
+	display: inline-block; 
+	padding: 1px 9px 2px; 
+	color: #fff; 
+	text-decoration: none;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold;
+	text-transform:capitalize;
+	margin:10px 0 0 0;
+}
+
+.navigation a:hover{background-color: #111; color: #fff;}
+.navigation a:active{ top: 1px; }
+
+
+.readmorelink{ margin-top:5px; width: 116px;}
+.readmorelink a {
+	background: #7b0000 url(alert-ov.png) repeat-x; 
+	display: inline-block; 
+	padding: 1px 9px 2px; 
+	color: #fff; 
+	text-decoration: none;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold;
+	text-transform:capitalize;
+	margin:10px 0 0 0;
+}
+
+.readmorelink a:hover{background-color: #111; color: #fff;}
+.readmorelink a:active{ top: 1px; }
+
+.viewdemo{clear:both; text-align:left; margin:10px 0 18px 0;}
+.viewdemo a {
+	background: #7b0000 url(alert-ov.png) repeat-x; 
+	display: inline-block; 
+	color: #fff; 
+	text-decoration: none;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	font-family:Arial, Helvetica, sans-serif;  font-weight:bold;
+	text-transform:capitalize;
+	font-size:14px;
+	padding:5px 14px 6px;
+}
+.viewdemo a:hover {background-color: #111; color: #fff;}
+.viewdemo a:active{top:1px;}
+
+.buylink{clear:both; text-align:left; margin:10px 0 18px 0;}
+.buylink a {
+	background: #515151 url(alert-ov.png) repeat-x; 
+	display: inline-block; 
+	color: #fff; 
+	text-decoration: none;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	font-family:Arial, Helvetica, sans-serif;  font-weight:bold;
+	text-transform:capitalize;
+	font-size:14px;
+	padding:5px 14px 6px;
+}
+.buylink a:hover {background-color: #111; color: #fff;}
+.buylink a:active{top:1px;}
+
+
+
+
+.excerpt-block {padding:0; margin-bottom:8px; max-height:122px; overflow:hidden;}
+.excerpt-block p {margin:0; padding:5px 0 5px 0;}
+.excerpt-block.short {padding-bottom:0; margin-bottom:0;}
+.excerpt-block.short p {margin:0; padding:0; }
+
+img.followme {padding: 25px 0 20px 0;} 
+
+.twitter-follow {margin:20px 0 30px 0;}
+.twitter-follow a {background: url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/twitter-follow.jpg); width:576px; height:131px; display:block; text-indent:-9999px;}
+
+
+
+li.pingback {margin:10px 0 10px 0; min-height:100px; padding:10px;}
+
+/*page navi*/
+
+
+.wp-pagenavi {line-height:24px; font-size:11px; margin:20px 0 15px 0;}
+.wp-pagenavi a.previouspostslink, .wp-pagenavi a.nextpostslink {background:#656565 url(alert-ov.png) repeat-x;}
+.wp-pagenavi a, .wp-pagenavi a:link {	
+	background: #222 url(alert-ov.png) repeat-x; 
+	display: inline-block; 
+	padding: 0px 9px 0px; 
+	color: #fff; 
+	text-decoration: none;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	font-family:Arial, Helvetica, sans-serif; font-size:10px; font-weight:bold;
+	text-transform:capitalize;
+	margin:0 3px 0 3px;
+}
+.wp-pagenavi a:hover {	
+background-color: #111; color: #fff; 
+}
+
+.wp-pagenavi a:active {
+ top: 1px; 
+}
+
+.wp-pagenavi span.pages {
+	padding: 2px 4px 2px 4px; 
+	margin: 2px 2px 2px 2px; 
+	color: #000000;
+	background-color: #FFFFFF;
+	font-family:Arial, Helvetica, sans-serif;
+
+}
+
+.wp-pagenavi span.current {
+	padding: 2px 6px 2px 6px; 
+	margin: 2px 4px 2px 4px; 	
+	color: #000000;
+	background-color: #FFFFFF;
+
+}
+
+.wp-pagenavi span.extend {
+	padding: 2px 4px 2px 4px; 
+	margin: 2px;	
+	border: 1px solid #000000;
+	color: #000000;
+	background-color: #FFFFFF;
+	display:none;
+
+}
+#page-links {line-height:24px; font-size:11px; clear:both; margin:15px 0 0 0;}
+#page-links a {
+	padding: 2px 6px 2px 6px;  
+	margin: 2px;
+	text-decoration: none;
+	border: 1px solid #881111;
+	color: #ffffff;
+	background-color: #881111 ;	
+}
+
+/*home-page*/
+
+#full-width #webdesignservices h3, #full-width #fromtheblog h3,  #full-width #testimonials h3, #full-width #r-testimonial h3 {font-family:arial, helvetica; font-size:20px; position:relative; z-index:50;}
+.main-container.homepage#full-width {padding-top:0;}
+#feature{width:895px; height:417px; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/new-feature.jpg) no-repeat; padding-bottom:33px; clear:both; margin-bottom:-16px; position:relative; z-index:1; overflow:hidden;}
+#feature a{position:absolute; top:298px; left:35px; display:block; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/call-to-action.png); width:392px; height:37px; text-indent:-9999px; outline:none;}
+#feature a:hover{background-position:0 -38px;}
+#feature a:active{top:299px;}
+
+/*
+#feature-overlay p {font-family:'Droid Sans', Arial; font-size:38px; color:#FFFFFF; font-weight:bold; line-height:42px; position:relative; top:274px; padding:0 0 0 0; text-shadow:2px 2px 0 #000; text-align:center; display:none; }
+#feature-overlay p span#gradient {position:absolute; background:url(images/gradient-dark.png); width:820px; display:block; height:85px; opacity:.5;}
+#feature-overlay p span#red {color:#990000;}
+#feature-overlay p small {color:#666666; font-family:arial; font-style:italic; font-size:17px; padding:0 0 0 15px;}
+*/
+
+#fromtheblog {width:284px; padding:0; margin:0 21px 0 0; float:left;}
+#full-width #fromtheblog h3 {padding:0 0 15px 0; margin:0}
+#fromtheblog ul li{list-style:none; padding:14px 12px; *background:#fcf7ec url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/odd-post.gif) repeat-x top left;}
+#fromtheblog ul li:nth-child(odd) {background:#fcf7ec url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/odd-post.gif) repeat-x top left;}
+#fromtheblog ul li:nth-child(even) {background:#fcfaf6 url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/even-post.gif) repeat-x top left;}
+
+#fromtheblog ul li span.comments-tab {background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/comment-number.png) no-repeat; width:26px; height:27px; font-size:11px; color:#fff; display:inline-block; float:right; position:relative; left: 15px; text-shadow:1px 1px 0 #000; text-align:center; font-weight:bold;}
+#fromtheblog ul li a.titles{font-size:15px; font-family:Arial, Helvetica, sans-serif; color:#000000; display:block; text-shadow:1px 1px 0 #fff; display:block; padding:0 0 7px 0; position:relative; *top:-10px;}
+#fromtheblog ul li a.titles:hover {color:#333333; text-decoration:underline;}
+#fromtheblog ul li .content-overflow{line-height:15px; height:60px; overflow:hidden; position:relative; *top:-8px;}
+#fromtheblog ul li a img {padding:3px; border:1px solid #CCCCCC; -moz-border-radius:2px; background:#FFFFFF; float:left; margin:3px 10px 2px 0; position:relative;}
+#fromtheblog ul li a img:hover {background:#ebebeb;}
+#fromtheblog ul li a img:active{ top:1px;}
+#fromtheblog ul li p {padding:0; margin:0; font-family:Arial, Helvetica, sans-serif; font-size:11px; text-shadow:1px 1px 0 #fff; color:#333333;}
+
+#webdesignservices {width:284px; padding:0; margin:0 21px 35px 0; float:left; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/box-software.jpg) no-repeat; background-position:126px 410px;  }
+#full-width #webdesignservices h3{padding:0 0 15px 5px; margin:0}
+#webdesignservices img {padding:0 5px 10px 5px;}
+#webdesignservices p {padding:10px 5px;}
+#webdesignservices h6{padding:8px 5px 5px 5px; margin:0; line-height:22px; font-size:16px;}
+
+#testimonials {width:284px; float:left;}
+#full-width #testimonials h3{padding:0 0 15px 0; margin:0}
+#testimonials a img {padding:3px; border:1px solid #5a5a5a; border-radius:2px; -webkit-border-radius:2px; -moz-border-radius:2px; background:#FFFFFF; float:right; position:relative; margin:0 0 0 10px; top:-3px; left:2px;} 
+#testimonials a img:hover {background:#ebebeb;}
+#testimonials a img:active{ top:-2px; }
+#freebie{padding:15px 15px 25px 15px; background:#666; border:1px solid #4f4f4f; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; overflow:hidden; position:relative; z-index:100;}
+#freebie a.titles {font-size:17px; font-family:'Droid Sans', Arial, Helvetica, sans-serif; color:#fff; display:block; text-shadow:1px 1px 0 #000; display:block; margin:6px 0 15px 0; overflow:hidden; height:42px; line-height:20px;}
+#freebie a.titles:hover {color:#ebebeb; text-decoration:underline;}
+#freebie p{height:80px; overflow:hidden; padding:0; margin:0; color:#eeeeee;}
+
+ul#stayintouch {clear:both; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/youcanalsofindmehere.jpg); width:284px; height:52px; margin:25px 0 15px 0;}
+ul#stayintouch li {list-style:none; float:left; }
+ul#stayintouch li#face{margin-left:125px;}
+ul#stayintouch li a {width:53px;  height:52px; display:block; text-indent:-9999px;}
+
+#full-width #r-testimonial h3  {padding:0 0 15px 0; margin:0}
+#r-testimonial p {padding:15px 20px; background:#F7F7F7; border:1px solid #e3e3e3;  border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; font-style:italic; font-size:12px;}
+#r-testimonial small {display:block; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/author.jpg) no-repeat top left; clear:both; width:137px; height:37px; padding:3px 0 0 45px; font-size:13px; font-weight:bold; line-height:15px; margin:10px 0 0 0; font-style:normal; text-shadow:1px 1px 0 #fff;  } 
+
+/*downloads-page*/
+.downloads-page h3 {clear:both; margin:0 0 18px 0; border-bottom:none;}
+
+.actual-links {clear:both; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/box_download_48.png)  no-repeat #f7f7f7; padding:15px 10px 15px 78px; background-position:15px 8px; border: 1px solid #ECECEC;
+-moz-border-radius: 4px 4px 4px 4px; border-radius: 4px 4px 4px 4px; -webkit-border-radius: 4px 4px 4px 4px;  
+
+}
+.actual-links strong a {text-transform:capitalize; font-size:14px;}
+.actual-links ul {padding:10px 0 25px 0; margin:0;  }
+.actual-links ul li {list-style:none; padding-left:20px; float:left; margin-left:8px; }
+.actual-links ul li.article-link {background: url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/information-frame.png) no-repeat; background-position:0 2px; margin-left:0;}
+.actual-links ul li.demo-link {background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/clapperboard--arrow.png) no-repeat; background-position:0 2px;}
+.actual-links ul li.download-link {background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/tick-circle-frame.png) no-repeat; background-position:0 2px;}
+.actual-links ul li.purchase {background: url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/shopping-basket.png) no-repeat; background-position:0 0; margin-left:0; margin-right:10px;}
+
+.actual-links.buy{
+-moz-border-radius: 4px 4px 4px 4px; border-radius: 4px 4px 4px 4px; -webkit-border-radius: 4px 4px 4px 4px;  background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/box_download_sale.png) no-repeat #EAE6DE;  border: 1px solid #DED8CA; padding:10px 15px 15px 78px; background-position:15px 8px;
+}
+.actual-links.buy a {text-shadow:1px 1px 0 #fff}
+.main-container .actual-links p {display:none;}
+/*pros-cons*/
+
+.pros {clear:both; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/accepted_48.png) no-repeat; padding:5px 0 15px 30px; background-position:0 6px;}
+.pros strong {font-style:italic;}
+.cons {clear:both; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/warning_48.png) no-repeat; padding:5px 0 15px 30px; background-position:0 6px;}
+.cons strong {font-style:italic}
+
+/*numbering*/
+.one {clear:both; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/numbers-1.png) no-repeat; padding:5px 0 15px 30px; background-position:0 6px;}
+.two {clear:both; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/numbers-2.png) no-repeat; padding:5px 0 15px 30px; background-position:0 6px;}
+.three {clear:both; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/numbers-3.png) no-repeat; padding:5px 0 15px 30px; background-position:0 6px;}
+.four {clear:both; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/numbers-4.png) no-repeat; padding:5px 0 15px 30px; background-position:0 6px;}
+.five {clear:both; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/numbers-5.png) no-repeat; padding:5px 0 15px 30px; background-position:0 6px;}
+
+/*freebies page*/
+
+img#freesafe {position:relative; left:580px; top:-10px; z-index:500; }
+#full-width div.special.free {position:absolute; top:70px; left:20px; z-index:1; line-height:18px; padding:12px 20px 25px 20px;}
+
+#full-width div.special.free ul {padding:15px 0 15px 25px;}
+#full-width div.special.free ul li {padding:0 0 3px 5px;}
+
+#full-width #freebies-fix {clear:both; margin-top:20px; margin-bottom:35px; overflow:hidden; }
+
+
+
+#full-width {width:894px; padding-left:22px; position:relative;}
+#full-width .special {padding:8px 12px 12px 12px; text-align:left; background:#ececec; border:1px solid #d7d7d7; margin:20px 0 5px 0; font-size:12px; line-height:17px; -moz-border-radius:4px 4px 4px 4px; text-shadow: 0 1px 0 #fff}
+#full-width h3 {padding:20px 0 26px 0; clear:both; display:block; border-bottom:none; margin-bottom:0px;}
+
+
+
+#creativecommons-logo{float:right; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/88x31.png) top right no-repeat; height:40px; padding-right:98px; width:96px; font-family:georgia; font-size:10px; line-height:11px; font-style:italic; padding-top:4px; text-align:right;}
+div.post-box3{float:left; width:284px; margin:0 21px 10px 0; overflow:hidden; height: 270px; padding-top:5px; position:relative; z-index:10;   }
+div.post-box3.last{margin-right:0;}
+.showfade_wrapper{width:284px; height:165px; overflow:hidden; position:relative;}
+span.sale {background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/sale-64px.png); width:64px; height:64px; position:absolute;  z-index:50; right:0px;top:5px;}
+
+.showfade_text {width:272px; height:113px; position:relative; top:-159px; left:6px; text-align:center; background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/transp.png); -moz-box-shadow: inset 1px 1px 10px #000; opacity:0; filter:alpha(opacity=0); padding-top:40px}
+.showfade_text h6 {color:#CCCCCC; padding:20px 0 13px 0; margin:0 auto; text-shadow:1px 1px 1px #000; font-size:23px; text-align:center;}
+.showfade_text a {display:block; text-indent:-9999px; width:107px; height:32px; margin-left:81px; }
+a.dl {background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/download-btn.png) no-repeat;}
+a:hover.dl {background-position:0 -32px;}
+a.vd {background:url(http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/view-demo-btn.png) no-repeat; margin-top:5px;}
+a:hover.vd {background-position:0 -32px;}
+
+img.alt-feature-images {border:1px solid #CCCCCC; padding:5px; -moz-border-radius:4px;}
+img:hover.alt-feature-images {background:#eaeaea;}
+
+
+
+.details {padding:6px 12px 8px 12px;  text-align:left; background:#eae6de; border:1px solid #ded8ca; margin:12px 0; font-size:12px; line-height:18px; -moz-border-radius:4px 4px 4px 4px; text-shadow: 0 1px 0 #fff; color:#990000;}
+.details strong a {font-family:Arial, Helvetica, sans-serif; font-size:15px; font-weight:bold; color:#232323;}
+.details strong a:hover {color:#999999;}
+
+.adunit {width:300px; height:250px; padding:8px; background:#CCCCCC; float:left; margin:0 0 10px 0; overflow:hidden;}
+.adunit-768 {clear:both; margin:40px 0 20px 71px; width:768px; }
+
+#ppmessage {position:relative; background:#f2f4ef; padding:20px; border:1px solid #cdcdcd; border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; color:#fff; margin:20px 0 10px 0; text-shadow:1px 1px 0 #fff; font-family:'Droid Serif', arial; font-size:15px; color:#16181c; line-height:20px;}
+
+
+
+/*work page*/
+a img.work {clear:both; margin-top:12px;}
+img.work {border:1px solid #999999; padding:5px; -moz-border-radius:4px;}
+img.work:hover {background:#eaeaea;}
+
+
+
+ #darkbg {  
+ display:none;  
+ background:#000000;  
+ opacity:0.7;  
+ filter:alpha(opacity=70);  
+ position:fixed;  
+ top:0px;  
+ left:0px;  
+ min-width:100%;  
+ min-height:100%;  
+ z-index:1000;  
+}  
+    /* Lightbox panel with some content */  
+#lightbox-panel {  
+     display:none;  
+     position:fixed;  
+     top:100px;  
+     left:50%;  
+     margin-left:-200px;  
+     width:400px;  
+     background:#FFFFFF;  
+     padding:22px 15px 18px 15px; 
+     border-radius:4px;
+     z-index:1001;  
+	 font-family:Arial, Helvetica, sans-serif;
+	 box-shadow: 0 0 10px #000, 1px 1px 100px #c9c9c9 inset;
+	 border:1px solid #fff;
+	 text-shadow: 1px 1px 0 #fff;
+    } 
+	#lightbox-panel a {color:#990000; text-decoration:none;}
+	#lightbox-panel a:hover {color:#000000; }
+	#lightbox-panel h2 {
+	font-family:arial, helvetica; 
+	font-size:19px;
+	border-bottom:1px dashed #ccc;
+	padding-bottom:13px; margin-bottom:20px;
+	}
+	#lightbox-panel ul {padding:0 0 20px 27px ; margin:0;} 
+	#lightbox-panel li {
+	padding-bottom:5px; padding-left:30px; padding-top:4px;
+	background:url('http://fearlessflyer.com/main/wp-content/themes/fearlessThemeVersion5/images/1306445833_ok-green.png') no-repeat;
+	list-style:none;
+	}
+	#lightbox-panel li a {font-weight:bold; text-decoration:none; }
+	#lightbox-panel p {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; line-height:17px; padding:0 5px 15px 5px;}
+	a#real {font-size:11px; display:block; padding:3px 0 10px 0; color:#000000;}
+	a#real:hover {text-decoration:underline;}
+	a#close-panel {font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; font-size:10px; text-decoration:none;} 
+	
+#themes-wrap {clear:both display:block; margin:0 0 0 0; overflow:hidden; padding:0 0 0 1px; }	
+#themes-wrap h3 {margin-top:10px;}
+#themes-wrap ul {padding:0 0 0 0; margin:0 0 0 0;}
+#themes-wrap p {margin-bottom:20px; }	
+#themes-wrap h6 {font-weight:bold; font-size:14px; line-height:17px; padding:0; margin-top:7px; font-family:'Droid Sans';}
+#themes-wrap h6 a {font-weight:bold;}
+.post-content ul li.themes-thumbs{padding-bottom:0;}
+li.themes-thumbs {float:left; margin:0 13px 25px 0; width:182px; height:172px; list-style:none;  padding:0;}
+li.themes-thumbs.last{margin-right:0; padding:0;}
+img.themes-img {width:179px; height:100px; padding:2px; border: 1px solid #CCCCCC; border-radius: 2px;}

@@ -1,0 +1,176 @@
+/********************************************
+   AUTHOR  	:  Erwin Aligam 
+   WEBSITE 	:  http://www.styleshout.com/
+   EMAIL		: 	ealigam@gmail.com
+   VERSION  :  2.0          	
+ *******************************************/
+ 
+/********************************************
+   HTML ELEMENTS
+********************************************/ 
+
+
+
+/***********************
+	  LAYOUT
+************************/
+
+#content, #header-content, #footer-content  {
+	width: 100% !important;	
+}
+
+/* content */
+#content-wrap {
+	clear: both;
+	float: left;
+	width: 100%;
+	background: #FAFAFA;  
+	/* background: #FAFAFA url(content-bg.jpg) repeat-y center top; */
+}
+#content {
+	text-align: left;	
+	padding: 0; 
+	margin: 200px auto;			
+}
+
+/* header */
+#header {
+	background: /*#FAFAFA */ #ff0000 url(bg000000.png) repeat-x;
+	height: 30px; 	
+	position: absolute;
+	width: 100%;
+	text-align: left;	
+	margin-left:60px;
+	margin-top:70px;
+	margin-bottom:10px;
+	border-top-left-radius: 10px 30px;
+}
+#header-content {
+	/*position: absolute;*/
+	position: absolute;
+
+	margin: 0 auto; 
+	padding: 0;	
+    margin-left:50px;
+	margin-bottom:10px;
+}
+/*
+#header-content h1 {	
+	position: absolute;
+	background: transparent url(logo0000.gif) no-repeat 0 0;
+	margin: 0; padding: 0;	
+	height:116px; width: 313px; 
+	
+	/* change the values of left and top to adjust the position of the slogan */
+/*	left: 15px; top: 0px;
+}*/
+/*
+#header-content h1 span {
+	position: absolute;
+	left: -2000px;	
+}*/
+#header-content #slogan {
+	position: absolute;	
+	font: normal 11px 'Trebuchet MS',sans-serif;
+	letter-spacing: 0px;
+	color: #918F8E;	
+	margin: 0; padding: 1px 0;
+	text-transform: none;
+	border-top: 1px solid #555;
+	
+	/* change the values of left and top to adjust the position of the slogan */
+	top: 170px; left: 115px;
+}
+
+/* main navigation tabs */
+#header-content ul {
+	 margin-left:50px;
+	list-style:none;
+    margin:0; padding:0;	
+	font: bold 10px Tahoma, 'Trebuchet MS', Arial, Sans-serif;
+	text-transform: none;
+	letter-spacing: 0;
+	right:0 ; top: 110px;
+	
+}
+#header-content li {
+   display:inline;
+   margin:0; padding:0;
+}
+#header-content a {
+   float:left;
+   margin:0;
+   padding:0 0 0 8px;
+   text-decoration:none;
+	color: #ABABAB;
+}
+#header-content a span {
+   float:left;
+   display:block;
+  /* padding:7px 25px 7px 7px;*/
+    padding:7px 20px 7px 7px;
+   color: #ABABAB;
+}
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#header-content a span {float:none;}
+/* End IE5-Mac hack */
+#header-content a:hover span {
+	color:#FFF;
+}
+#header-content a:hover {
+    color: #FFF; 
+       background: url(tableft0.gif) no-repeat left top;  
+}
+.bg1 
+{
+  background-image: url(tableft0.gif);
+}
+
+.bg2 
+{
+  background-image: url(tableft0.gif);
+}
+
+#header-content a:hover span {
+  	 color: #FFF; 
+  	 background: url(tabright.gif) no-repeat right top;
+}
+#header-content #current a {
+   background: url(tableft0.gif) no-repeat left top;  
+	color: #FFF; 	
+}
+#header-content #current a span {
+   background: url(tabright.gif) no-repeat right top;
+	color: #FFF;
+}
+
+/* header links */
+#header-content ul#header-links {	
+	list-style: none;	
+	font-size: .88em;
+	position: absolute;
+	background: #282222;
+	border: 1px solid #2C2929;
+	padding: 5px 10px 8px 10px;
+	font-weight: normal;	
+	top: 0px; right: 10px;
+}
+#header-content ul#header-links li {
+	float: left;
+}
+#header-content ul#header-links li a {	
+	color: #A8A6A6;
+	text-decoration: none;		
+	display: block;
+	padding: 0px 15px;		
+}
+#header-content ul#header-links li a:hover {
+	color: #35AA32;
+}
+
+
+
+
+
+
+

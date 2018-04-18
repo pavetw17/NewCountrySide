@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" jdk="jdk1.7" jdk_type="JavaSDK">
+	<output-test url="file://$MODULE_DIR$/out/test/NTK2015"/>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<excludeFolder url="file://$MODULE_DIR$/src/com/cwrs/ntk/common/old"/>
+		<excludeFolder url="file://$MODULE_DIR$/src/com/cwrs/ntk/docconverter"/>
+		<excludeFolder url="file://$MODULE_DIR$/src/com/cwrs/ntk/render"/>
+		<excludeFolder url="file://$MODULE_DIR$/src/com/cwrs/ntk/servlets/dao/xxx"/>
+		<excludeFolder url="file://$MODULE_DIR$/src/com/cwrs/ntk/vientham"/>
+	</contentEntry>
+	<levels>
+		<level name="tomcat" value="project"/>
+		<level name="Java EE 6-Java EE 6" value="project"/>
+		<level name="lib" value="project"/>
+	</levels>
+</component>

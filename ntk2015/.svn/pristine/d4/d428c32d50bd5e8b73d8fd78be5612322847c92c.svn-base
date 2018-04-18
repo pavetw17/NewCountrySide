@@ -1,0 +1,481 @@
+package com.cwrs.ntk.servlets.ControllerQuanTri;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.annotation.Resource;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+
+import com.cwrs.ntk.common.Definitions;
+import com.cwrs.ntk.common.JResult;
+import com.cwrs.ntk.servlets.dao.DBOperation;
+import com.cwrs.ntk.servlets.dao.DlgNhanSu;
+import com.cwrs.ntk.servlets.dao.DlgOperation;
+import com.cwrs.ntk.servlets.dao.DlgPhanLoaiThanhVien;
+import com.cwrs.ntk.servlets.dao.DlgPhanLoaiTinTuc;
+import com.cwrs.ntk.servlets.dao.DlgPhanLoaiVanBan;
+import com.cwrs.ntk.servlets.dao.DlgQuyen;
+import com.cwrs.ntk.servlets.dao.DlgTaiKhoan;
+import com.cwrs.ntk.servlets.dao.DlgTinTucHoatDong;
+import com.cwrs.ntk.servlets.dao.DlgToChuc;
+import com.cwrs.ntk.servlets.dao.DlgVanBanPhapLy;
+import com.cwrs.ntk.servlets.dao.DlgYKienChiDao;
+
+/**
+ * Created by VN on 3/31/2015.
+ */
+@WebServlet("/HomeServlet")
+public class HomeServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Resource(name = "jdbc/ntm")
+    private DataSource ds;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequests(request,response);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequests(request,response);
+    }
+
+    protected void processRequests(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        
+       /* System.out.println("check value: " + request.getParameter("values"));*/
+        String codeRequest = request.getParameter("action");
+        System.out.println("--- Code Request: ---" + codeRequest);
+       
+        if (codeRequest==null ||"null".equalsIgnoreCase(codeRequest))return;
+        PrintWriter writeResponse = response.getWriter();
+        DBOperation dbo = new DBOperation();
+        Connection conn = null;
+        try {
+            conn = ds.getConnection();
+            dbo.setConnection(conn);
+            switch(Integer.parseInt(codeRequest)) {
+                case Definitions.ACT_DB_CHECK_DATA_EXISTS: checkDataExists(dbo,request,writeResponse); break;
+                case Definitions.ACT_DB_MAX_DATA: checkMAX(dbo, request, writeResponse ); break;
+
+                /* Danh sach phan quyen*/
+                case Definitions.ACT_GET_DATA_TO_FORM_SHOW_DANHSACHQUYEN: getDatatoDanhSachPhanQuyenForm(dbo, request, response, writeResponse);break;
+                case Definitions.ACT_GET_DATA_TO_EDIT_DANHSACHQUYEN: getDatatoEditDanhSachPhanQuyenForm(dbo,request,response,writeResponse); break;
+                case Definitions.ACT_GET_LIST_DANHSACHQUYEN_TO_CHECKBOX: getListQuyen2ComboHtml(dbo, request, writeResponse);break;
+                
+                /*Danh sach tai khoan*/
+                case Definitions.ACT_GET_DATA_TO_FORM_SHOW_DS_TAIKHOAN: getDatatoDanhSachTaiKhoanForm(dbo, request, response, writeResponse);break;
+                case Definitions.ACT_GET_DATA_TO_EDIT_DS_TAIKHOAN: getDatatoEditDanhSachTaiKhoanForm(dbo, request, response, writeResponse);break;
+                case Definitions.ACT_GET_DATA_USERLIST: getData2EditUser(dbo, request, writeResponse);break;
+                
+                /* Danh sach phan loai van ban */
+                case Definitions.ACT_GET_DATA_TO_FORM_SHOW_DS_PHANLOAIVANBAN: getDatatoDs_PhanLoaiVanBanForm(dbo, request, response, writeResponse);break;
+                case Definitions.ACT_GET_DATA_TO_EDIT_DS_PHANLOAIVANBAN: getDatatoEditDs_PhanLoaiVanBanForm(dbo, request, response, writeResponse); break;
+                case Definitions.ACT_GET_VANBAN_PHANLOAI_TO_CBB: getVanBanPhanLoai2Cbb(dbo, request, writeResponse);break;
+                case Definitions.ACT_GET_DATA_TO_FORM_SHOW_DS_VANBANPHAPLY: getDatatoDs_VanBanPhapLyForm(dbo, request, response, writeResponse); break;
+                case Definitions.ACT_GET_DATA_TO_EDIT_DS_VANBANPHAPLY: getDatatoEditDs_VanBanPhapLyForm(dbo, request, response, writeResponse); break;
+                
+                /*Y kien chi dao*/
+                case Definitions.ACT_GET_DATA_TO_FORM_SHOW_DS_YKIENCHIDAO: getDatatoDs_YKienChiDaoForm(dbo, request, response, writeResponse);break;
+                case Definitions.ACT_GET_DATA_TO_EDIT_DS_YKIENCHIDAO: getDatatoEditDs_YKienChiDaoForm(dbo, request, response, writeResponse); break;
+                
+                /*Tin tuc hoat dong*/
+                case Definitions.ACT_GET_DATA_TO_FORM_SHOW_TINTUCHOATDONG_PHANLOAI: getDatato_PhanLoaiTinTucHoatDongForm(dbo, request, response, writeResponse);break;
+                case Definitions.ACT_GET_DATA_TO_EDIT_TINTUCHOATDONG_PHANLOAI: getDatatoEdit_PhanLoaiTinTucHoatDongForm(dbo, request, response, writeResponse); break;
+                case Definitions.ACT_GET_TINTUCHOATDONG_TO_CBB: getTinTucPhanLoai2Cbb(dbo, request, writeResponse);break;
+                case Definitions.ACT_GET_DATA_TO_FORM_SHOW_TINTUCHOATDONG: getDatato_TinTucHoatDongForm(dbo, request, response, writeResponse); break;
+                case Definitions.ACT_GET_DATA_TO_EDIT_DS_TINTUCHOATDONG: getDatatoEdit_TinTucHoatDongForm(dbo, request, response, writeResponse); break;
+                
+                /*To chuc*/
+                case Definitions.ACT_GET_DATA_TO_FORM_TOCHUC: getDatato_ToChucForm(dbo, request, response, writeResponse);break;
+                case Definitions.ACT_GET_DATA_TO_EDIT_TOCHUC: getDatatoEdit_ToChucForm(dbo, request, response, writeResponse);break;
+                case Definitions.ACT_GET_TOCHUC_TO_CBB: getToChuc2Cbb(dbo, request, writeResponse);break;
+                
+                /*Nhan su*/
+                case Definitions.ACT_GET_DATA_TO_FORM_SHOW_NHANSU: getDatato_NhanSuForm(dbo, request, response, writeResponse);break;
+                case Definitions.ACT_GET_DATA_TO_EDIT_NHANSU: getDatatoEdit_NhanSuForm(dbo, request, writeResponse);break;
+                
+                /*Phan loai thanh vien*/
+                case Definitions.ACT_GET_DATA_TO_FORM_PHANLOAI_THANHVIEN: getDatato_PhanLoaiThanhVienForm(dbo, request, response, writeResponse); break;
+                case Definitions.ACT_GET_DATA_TO_EDIT_PHANLOAI_THANHVIEN: getDatatoEdit_PhanLoaiThanhVienForm(dbo, request, response, writeResponse); break;
+                 
+                
+                
+                
+                //Insert/Update to Database
+                case Definitions.ACT_DB_INSERT_UPDATE_MULTI_OBJECT: execInsertUpdatedMultiRecords2DBByClient(dbo, request, writeResponse);break;
+                case Definitions.ACT_DB_UPDATE_DATAGRID: execUpdateDataGrid(dbo, request, writeResponse); break; //using the grid eidt save 
+                case Definitions.ACT_DB_DELETE_OBJECT : deleteRecord(dbo, request, writeResponse); break;
+            
+                default:System.err.println("UNKNOW ACTION");  	break;
+            }
+        } catch (SQLException e) {
+            System.out.println( "HomeServlet SQLException: " + e.toString());
+        } finally {
+            if (conn != null) {
+                dbo.closeConnection();
+            }
+        }
+    }
+
+   
+
+	private void getDatatoEdit_NhanSuForm(DBOperation dbo,
+			HttpServletRequest request, PrintWriter writeResponse) {
+		// TODO Auto-generated method stub
+		DlgNhanSu dlgNhanSu = new DlgNhanSu();
+        writeResponse.print(dlgNhanSu.getDatato_EditNhanSuForm(dbo, request.getParameter("condition")));
+	}
+	
+	private void getDatato_NhanSuForm(DBOperation dbo,
+			HttpServletRequest request, HttpServletResponse response,
+			PrintWriter writeResponse) {
+		int  total = Integer.parseInt(request.getParameter("total"));
+        int  records = Integer.parseInt(request.getParameter("records"));
+        int  page = Integer.parseInt(request.getParameter("page"));
+        int  rows = Integer.parseInt(request.getParameter("rows"));
+
+        String  condition = request.getParameter("condition");
+        int limit = rows;
+        int offset = (page - 1)*rows;
+
+        DlgNhanSu dlgNhanSu = new DlgNhanSu();
+        String s = (String)dlgNhanSu.getDatato_NhanSuForm(dbo, total, records, limit, offset, condition, true);
+//        System.err.println("Json response: " + s );
+        writeResponse.print(s);
+	}
+
+	private void getToChuc2Cbb(DBOperation dbo, HttpServletRequest request,
+			PrintWriter writeResponse) {
+		DlgOperation dop = new DlgOperation();
+		String condition = request.getParameter("condition");
+		int type = Integer.parseInt(request.getParameter("type"));
+		String topsymbol = request.getParameter("topsymbol");
+		String prefix_to_id = request.getParameter("prefix_to_id"); //chèn thêm prefix_to_id vào trước id value
+		String prefix_to_name =  request.getParameter("prefix_to_name");
+		String s = dop.getToChuc2Cbb(dbo, condition, type, topsymbol,prefix_to_id,prefix_to_name);
+		writeResponse.print(s);
+	}
+
+	private void getDatatoEdit_ToChucForm(DBOperation dbo,
+			HttpServletRequest request, HttpServletResponse response,
+			PrintWriter writeResponse) {
+		DlgToChuc dlgToChuc = new DlgToChuc();
+        writeResponse.print(dlgToChuc.getDatatoEdit_ToChucForm(dbo, request.getParameter("condition")));
+	}
+
+	private void getDatato_ToChucForm(DBOperation dbo,
+			HttpServletRequest request, HttpServletResponse response,
+			PrintWriter writeResponse) {
+		int  total = Integer.parseInt(request.getParameter("total"));
+        int  records = Integer.parseInt(request.getParameter("records"));
+        int  page = Integer.parseInt(request.getParameter("page"));
+        int  rows = Integer.parseInt(request.getParameter("rows"));
+
+        String  condition = request.getParameter("condition");
+        int limit = rows;
+        int offset = (page - 1)*rows;
+
+        DlgToChuc dlgToChuc = new DlgToChuc();
+        String s = (String)dlgToChuc.getDatato_ToChucForm(dbo, total, records, limit, offset, condition, true);
+//        System.err.println("Json response: " + s );
+        writeResponse.print(s);
+	}
+
+	private void getDatatoEdit_PhanLoaiThanhVienForm(DBOperation dbo,
+			HttpServletRequest request, HttpServletResponse response,
+			PrintWriter writeResponse) {
+    	DlgPhanLoaiThanhVien dlgPhanLoaiThanhVien = new DlgPhanLoaiThanhVien();
+        writeResponse.print(dlgPhanLoaiThanhVien.getDatatoEditPhanLoaiThanhVienForm(dbo, request.getParameter("condition")));
+	}
+
+	private void getDatato_PhanLoaiThanhVienForm(DBOperation dbo,
+			HttpServletRequest request, HttpServletResponse response,
+			PrintWriter writeResponse) {
+    	 int  total = Integer.parseInt(request.getParameter("total"));
+         int  records = Integer.parseInt(request.getParameter("records"));
+         int  page = Integer.parseInt(request.getParameter("page"));
+         int  rows = Integer.parseInt(request.getParameter("rows"));
+
+         String  condition = request.getParameter("condition");
+         int limit = rows;
+         int offset = (page - 1)*rows;
+
+         DlgPhanLoaiThanhVien dlgPhanLoaiThanhVien = new DlgPhanLoaiThanhVien();
+         String s = (String)dlgPhanLoaiThanhVien.getDatatoPhanLoaiThanhVienForm(dbo, total, records, limit, offset, condition, true);
+//         System.err.println("Json response: " + s );
+         writeResponse.print(s);
+	}
+	
+	 private void getDatatoEdit_TinTucHoatDongForm(DBOperation dbo,
+				HttpServletRequest request, HttpServletResponse response,
+				PrintWriter writeResponse) {
+		 DlgTinTucHoatDong dlgTinTucHoatDong = new DlgTinTucHoatDong();
+	     writeResponse.print(dlgTinTucHoatDong.getDatatoEdit_TinTucHoatDongForm(dbo, request.getParameter("condition"),true));
+	}
+
+	private void getDatato_TinTucHoatDongForm(DBOperation dbo,
+			HttpServletRequest request, HttpServletResponse response,
+			PrintWriter writeResponse) {
+    	 int  total = Integer.parseInt(request.getParameter("total"));
+         int  records = Integer.parseInt(request.getParameter("records"));
+         int  page = Integer.parseInt(request.getParameter("page"));
+         int  rows = Integer.parseInt(request.getParameter("rows"));
+
+         String  condition = request.getParameter("condition");
+         int limit = rows;
+         int offset = (page - 1)*rows;
+
+         DlgTinTucHoatDong dlgTinTucHoatDong = new DlgTinTucHoatDong();
+         String s = (String)dlgTinTucHoatDong.getDatato_TinTucHoatDongForm(dbo, total, records, limit, offset, condition, true);
+         writeResponse.print(s);
+	}
+
+	private void getTinTucPhanLoai2Cbb(DBOperation dbo,	HttpServletRequest request, PrintWriter writeResponse) {
+    	DlgOperation dop = new DlgOperation();
+		String condition = request.getParameter("condition");
+		int type = Integer.parseInt(request.getParameter("type"));
+		String topsymbol = request.getParameter("topsymbol");
+		String prefix_to_id = request.getParameter("prefix_to_id"); //chèn thêm prefix_to_id vào trước id value
+		String prefix_to_name =  request.getParameter("prefix_to_name");
+		String s = dop.getTinTucPhanLoai2Cbb(dbo, condition, type, topsymbol,prefix_to_id,prefix_to_name);
+		writeResponse.print(s);
+	}
+
+	private void getDatatoEdit_PhanLoaiTinTucHoatDongForm(DBOperation dbo,
+			HttpServletRequest request, HttpServletResponse response,
+			PrintWriter writeResponse) {
+    	  DlgPhanLoaiTinTuc dlgPhanLoaiTinTuc = new DlgPhanLoaiTinTuc();
+	      writeResponse.print(dlgPhanLoaiTinTuc.getDatatoEditDs_PhanLoaiTinTucForm(dbo, request.getParameter("condition")));
+	}
+
+	private void getDatato_PhanLoaiTinTucHoatDongForm(DBOperation dbo,
+			HttpServletRequest request, HttpServletResponse response,
+			PrintWriter writeResponse) {
+		  int  total = Integer.parseInt(request.getParameter("total"));
+          int  records = Integer.parseInt(request.getParameter("records"));
+          int  page = Integer.parseInt(request.getParameter("page"));
+          int  rows = Integer.parseInt(request.getParameter("rows"));
+
+          String  condition = request.getParameter("condition");
+          int limit = rows;
+          int offset = (page - 1)*rows;
+
+          DlgPhanLoaiTinTuc dlgPhanLoaiTinTuc = new DlgPhanLoaiTinTuc();
+          String s = (String)dlgPhanLoaiTinTuc.getDatatoDs_PhanLoaiTinTucForm(dbo, total, records, limit, offset, condition, true);
+//          System.err.println("Json response: " + s );
+          writeResponse.print(s);
+	}
+
+	private void getDatatoEditDs_YKienChiDaoForm(DBOperation dbo,
+			HttpServletRequest request, HttpServletResponse response,
+			PrintWriter writeResponse) {
+    	DlgYKienChiDao dlgYKienChiDao = new DlgYKienChiDao();
+        writeResponse.print(dlgYKienChiDao.getDatatoEditDs_YKienChiDaoForm(dbo, request.getParameter("condition"),true));
+	}
+
+	private void getDatatoDs_YKienChiDaoForm(DBOperation dbo,HttpServletRequest request, HttpServletResponse response,
+			PrintWriter writeResponse) {
+    	 int  total = Integer.parseInt(request.getParameter("total"));
+         int  records = Integer.parseInt(request.getParameter("records"));
+         int  page = Integer.parseInt(request.getParameter("page"));
+         int  rows = Integer.parseInt(request.getParameter("rows"));
+
+         String  condition = request.getParameter("condition");
+         int limit = rows;
+         int offset = (page - 1)*rows;
+
+         DlgYKienChiDao dlgYKienChiDao = new DlgYKienChiDao();
+         String s = (String)dlgYKienChiDao.getDatatoDs_YKienChiDaoForm(dbo, total, records, limit, offset, condition, true);
+         writeResponse.print(s);
+	}
+
+	private void getVanBanPhanLoai2Cbb(DBOperation dbo,HttpServletRequest request, PrintWriter writeResponse) {
+    	DlgOperation dop = new DlgOperation();
+		String condition = request.getParameter("condition");
+		int type = Integer.parseInt(request.getParameter("type"));
+		String topsymbol = request.getParameter("topsymbol");
+		String prefix_to_id = request.getParameter("prefix_to_id"); //chèn thêm prefix_to_id vào trước id value
+		String prefix_to_name =  request.getParameter("prefix_to_name");
+		String s = dop.getVanBanPhanLoai2Cbb(dbo, condition, type, topsymbol,prefix_to_id,prefix_to_name);
+		writeResponse.print(s);
+	}
+
+	public void getListQuyen2ComboHtml(DBOperation dbo, HttpServletRequest request, PrintWriter writeResponse){
+		DlgQuyen dlgquyen = new DlgQuyen();
+		String s = (String)dlgquyen.getListQuyen2ComboHtml(dbo, null, true);
+		writeResponse.print(s);
+	}
+    
+    public void getDatatoDanhSachPhanQuyenForm(DBOperation dbo, HttpServletRequest request, HttpServletResponse response, PrintWriter writeResponse){
+//      System.out.println("page=" + request.getParameter("page"));
+//      System.out.println("rows=" + request.getParameter("rows"));
+//      System.out.println("total=" + request.getParameter("total"));
+//      System.out.println("records=" + request.getParameter("records"));
+
+      int  total = Integer.parseInt(request.getParameter("total"));
+      int  records = Integer.parseInt(request.getParameter("records"));
+      int  page = Integer.parseInt(request.getParameter("page"));
+      int  rows = Integer.parseInt(request.getParameter("rows"));
+
+      String  condition = request.getParameter("condition");
+      int limit = rows;
+      int offset = (page - 1)*rows;
+
+      DlgQuyen dlgquyen = new DlgQuyen();
+      String s = (String)dlgquyen.getDatatoDanhSachPhanQuyenForm(dbo, total, records, limit, offset, condition, true);
+//      System.err.println("Json response: " + s );
+      writeResponse.print(s);
+    }
+    
+    public void getDatatoEditDanhSachPhanQuyenForm (DBOperation dbo, HttpServletRequest request, HttpServletResponse response, PrintWriter writeResponse){
+        DlgQuyen dlgquyen = new DlgQuyen();
+        writeResponse.print(dlgquyen.getDatatoEditDanhSachPhanQuyenForm(dbo,request.getParameter("condition")));
+    }
+
+    public void getDatatoDanhSachTaiKhoanForm(DBOperation dbo, HttpServletRequest request, HttpServletResponse response, PrintWriter writeResponse){
+      int  total = Integer.parseInt(request.getParameter("total"));
+      int  records = Integer.parseInt(request.getParameter("records"));
+      int  page = Integer.parseInt(request.getParameter("page"));
+      int  rows = Integer.parseInt(request.getParameter("rows"));
+
+      String  condition = request.getParameter("condition");
+      int limit = rows;
+      int offset = (page - 1)*rows;
+
+      DlgTaiKhoan dlgtaikhoan = new DlgTaiKhoan();
+      String s = (String)dlgtaikhoan.getDatatoDanhSachTaiKhoanForm(dbo, total, records, limit, offset, condition, true);
+//      System.err.println("Json response: " + s );
+      writeResponse.print(s);
+    }  
+    
+    public void getDatatoEditDanhSachTaiKhoanForm (DBOperation dbo, HttpServletRequest request, HttpServletResponse response, PrintWriter writeResponse){
+        DlgTaiKhoan dlgtaikhoan = new DlgTaiKhoan();
+        writeResponse.print(dlgtaikhoan.getDatatoEditDanhSachTaiKhoanForm(dbo,request.getParameter("condition")));
+    }
+  
+    
+    public void checkDataExists(DBOperation dbo, HttpServletRequest request, PrintWriter writeResponse){
+        DlgOperation dop = new DlgOperation();
+        writeResponse.print(dop.checkDataExists(dbo,request,writeResponse));
+    }
+
+    public void checkMAX(DBOperation dbo, HttpServletRequest request, PrintWriter writeResponse){
+        DlgOperation dop = new DlgOperation();
+        writeResponse.print(dop.checkMAX(dbo,request,writeResponse));
+
+    }
+
+    public void getDatatoDs_PhanLoaiVanBanForm(DBOperation dbo, HttpServletRequest request, HttpServletResponse response, PrintWriter writeResponse){
+        int  total = Integer.parseInt(request.getParameter("total"));
+        int  records = Integer.parseInt(request.getParameter("records"));
+        int  page = Integer.parseInt(request.getParameter("page"));
+        int  rows = Integer.parseInt(request.getParameter("rows"));
+
+        String  condition = request.getParameter("condition");
+        int limit = rows;
+        int offset = (page - 1)*rows;
+
+        DlgPhanLoaiVanBan dlgPhanLoaiVanBan = new DlgPhanLoaiVanBan();
+        String s = (String)dlgPhanLoaiVanBan.getDatatoDs_PhanLoaiVanBanForm(dbo, total, records, limit, offset, condition, true);
+//        System.err.println("Json response: " + s );
+        writeResponse.print(s);
+    }
+
+    public void getDatatoEditDs_PhanLoaiVanBanForm (DBOperation dbo, HttpServletRequest request, HttpServletResponse response, PrintWriter writeResponse){
+        DlgPhanLoaiVanBan dlgPhanLoaiVanBan = new DlgPhanLoaiVanBan();
+        writeResponse.print(dlgPhanLoaiVanBan.getDatatoEditDs_PhanLoaiVanBanForm(dbo, request.getParameter("condition")));
+    }
+
+    public void getDatatoDs_VanBanPhapLyForm(DBOperation dbo, HttpServletRequest request, HttpServletResponse response, PrintWriter writeResponse){
+      int  total = Integer.parseInt(request.getParameter("total"));
+      int  records = Integer.parseInt(request.getParameter("records"));
+      int  page = Integer.parseInt(request.getParameter("page"));
+      int  rows = Integer.parseInt(request.getParameter("rows"));
+
+      String  condition = request.getParameter("condition");
+      int limit = rows;
+      int offset = (page - 1)*rows;
+
+      DlgVanBanPhapLy dlgVanBanPhapLy = new DlgVanBanPhapLy();
+      String s = (String)dlgVanBanPhapLy.getDatatoDs_VanBanPhapLyForm(dbo, total, records, limit, offset, condition, true);
+      //System.err.println("Json response: " + s );
+      writeResponse.print(s);
+    }
+    
+    public void getDatatoEditDs_VanBanPhapLyForm (DBOperation dbo, HttpServletRequest request, HttpServletResponse response, PrintWriter writeResponse){
+        DlgVanBanPhapLy dlgVanBanPhapLy = new DlgVanBanPhapLy();
+        writeResponse.print(dlgVanBanPhapLy.getDatatoEditDs_VanBanPhapLyForm(dbo, request.getParameter("condition"),true));
+    }
+    
+    public void  execInsertUpdatedMultiRecords2DBByClient(DBOperation dbo, HttpServletRequest request, PrintWriter writeResponse) {
+        // System.out.println("execInsertUpdatedMultiRecords2DBByClient...");
+    	String ret = dbo.execInsertUpdatedMultiRecords2DBByClient(
+				/*single/multiple SQL query */request.getParameter("sqlquery")
+                ,/*condition */request.getParameter("condition")
+                ,/*values */request.getParameter("values")
+                ,/*sql type order in query */request.getParameter("sqlTypeOrder")
+                ,/*ids */request.getParameter("ids")
+        );
+        writeResponse.print(ret);
+    }
+
+    public void deleteRecord(DBOperation dbo, HttpServletRequest request, PrintWriter writeResponse){
+        String condition = request.getParameter("condition");
+        /*System.out.println("Delete Record: " + condition);*/
+        String tableName = request.getParameter("tableName");
+        DlgOperation dop = new DlgOperation();
+        JResult jro = dop.deleteObject(dbo, tableName, condition);
+        writeResponse.print(jro.toString());
+    }
+    
+    public int execUpdateDataGrid(DBOperation dbo, HttpServletRequest request,PrintWriter writeResponse){
+    	String tablename = request.getParameter("tablename");
+    			
+    	String insertFields = request.getParameter("insertFields");		
+    	String insertValues = request.getParameter("insertValues");
+    	
+    	String updateFields = request.getParameter("updateFields");
+    	String updateValues = request.getParameter("updateValues");
+    	String returnid = request.getParameter("returnid");
+    	System.out.println("insertFields =" + insertFields);
+    	System.out.println("insertValues =" + insertValues);
+    	System.out.println("updateFields = " +updateFields);
+    	System.out.println("updateValues =" + updateValues);
+    	System.out.println("tablename =" + tablename);
+    	System.out.println("returnid =" + returnid);
+
+    	writeResponse.print(dbo.execUpdateDataGrid(tablename,insertFields,insertValues,updateFields,updateValues,returnid));
+    	return Definitions.DB_INT_OK;
+    }
+    
+    public void getData2EditUser(DBOperation dbo, HttpServletRequest request,PrintWriter writeResponse){
+    	System.out.println("page=" + request.getParameter("page"));
+    	System.out.println("rows=" + request.getParameter("rows"));
+    	System.out.println("total=" + request.getParameter("total"));
+    	System.out.println("records=" + request.getParameter("records"));
+    	//if ("null".equalsIgnoreCase(request.getParameter("records"))) total = -1;
+    	
+    	int  total = -1;//Integer.parseInt(request.getParameter("total"));
+    	int  records = -1;//Integer.parseInt(request.getParameter("records"));
+    	int  page = Integer.parseInt(request.getParameter("page"));
+    	int  rows = Integer.parseInt(request.getParameter("rows"));
+    	
+    	String  condition = request.getParameter("condition"); 
+    	int limit = rows;
+    	int offset = (page - 1)*rows;
+    	DlgTaiKhoan dlgTaiKhoan = new DlgTaiKhoan();
+    	String s = (String)dlgTaiKhoan.getDatatoDanhSachTaiKhoanForm(dbo, total, records, limit, offset, condition, true);
+    	//System.err.println(s);
+    	writeResponse.print(s);
+    }
+}
